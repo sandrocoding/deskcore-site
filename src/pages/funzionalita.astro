@@ -21,20 +21,20 @@ const categories = [
     features: [
       { icon: "📈", title: "Pipeline Commerciale", description: "Lead, opportunita, conversione, forecast pesato, performance per commerciale", details: "Gestione completa lead e opportunita con Kanban conversione. Import lead da CSV. Cruscotto commerciale con 6 KPI, funnel conversione, analisi per categoria. Performance per commerciale con ranking e conversion rate. Pipeline forecast pesato per probabilita con previsione 3 mesi." },
       { icon: "📝", title: "Preventivi Intelligenti", description: "Wizard 3 step, firma digitale, suggerimenti AI prodotti correlati, template editor", details: "Wizard 3 step (preventivo → dati → riepilogo con firma). Suggerimenti AI prodotti correlati basati su co-occorrenza storica. Firma digitale cliente con link pubblico, audit trail e PDF con firma overlay. Template editor WYSIWYG con variabili. Condizioni fornitura/garanzia/pagamento editabili." },
-      { icon: "📄", title: "Contratti MSP", description: "7 template predefiniti, monte ore con barre progresso, residui granulari, PDF pro", details: "7 template contrattuali MSP predefiniti con card visive. Monte ore con barre progresso colorate e residui granulari (unita/giornate/mezze giornate). PDF professionale generato automaticamente. Collegamento a preventivi e fatturazione." },
+      { icon: "📄", title: "Contratti MSP", description: "7 template predefiniti, monte ore con barre progresso, residui granulari, PDF pro", details: "7 template contrattuali MSP predefiniti con card visive. Monte ore con barre progresso colorate e residui granulari (unita/giornate/mezze giornate). PDF professionale generato automaticamente. Collegamento diretto a preventivi." },
       { icon: "🎯", title: "Campagne", description: "Kanban fasi, KPI target vs actual, 6 tipi campagna, budget e obiettivi", details: "Campagne commerciali con 5 fasi default e Kanban drag&drop membri tra fasi. 6 tipi campagna (acquisition, retention, upsell, cross-sell, reactivation, other). Dashboard KPI con membri/target lead/deal/conversione. Statistiche per fase con tassi conversione e tempi medi." },
       { icon: "🔗", title: "Cross-Selling Matrix", description: "Griglia clienti x servizi, tasso penetrazione, navigazione diretta", details: "Matrice visuale clienti × servizi con stato colorato (attivo/preventivato/perso/non attivo). Tasso penetrazione per servizio calcolato automaticamente. Click-to-entity per navigazione diretta. Filtro per categoria servizio." },
     ]
   },
   {
-    icon: "💰",
-    name: "Fatturazione & Finance",
-    description: "Dalla fatturazione automatica all'analisi finanziaria avanzata.",
+    icon: "📊",
+    name: "Analytics & Business Intelligence",
+    description: "Dall'analisi dei costi alla business intelligence avanzata.",
     features: [
-      { icon: "🧾", title: "Fatture in Cloud", description: "Integrazione nativa bidirezionale, import clienti, righe fatturabili, bozze", details: "Sync bidirezionale con Fatture in Cloud: export clienti, import clienti con dedup P.IVA/CF, creazione sedi. Righe fatturabili da rapportini ed export diretto. Creazione bozze fattura. 6 pagine UI dedicate alla gestione fatturazione." },
-      { icon: "🔄", title: "Canoni e Noleggi", description: "Ricorrenza configurabile, MRR/ARR tracking, fatturazione automatica cron", details: "Pagamenti ricorrenti con 7 tipi (subscription, rental, license, maintenance, hosting, support, other). 4 frequenze (monthly/quarterly/semiannual/annual). Fatturazione automatica con cron giornaliero. KPI summary con MRR/ARR/margine. Rinnovo e terminazione automatica." },
+      { icon: "📈", title: "Dashboard KPI", description: "Metriche real-time, confronto mese/mese, grafici andamento, ranking clienti", details: "KPI avanzati con 6 metriche header e confronto mese/mese. Grafico andamento giornaliero, donut impegno per cliente, analisi attivita per tipo. Dashboard per ruolo (tecnico vs admin). Widget drag&drop personalizzabili con WebSocket live updates." },
+      { icon: "🔄", title: "Canoni e Noleggi", description: "Ricorrenza configurabile, MRR/ARR tracking, rinnovi automatici", details: "Pagamenti ricorrenti con 7 tipi (subscription, rental, license, maintenance, hosting, support, other). 4 frequenze (monthly/quarterly/semiannual/annual). KPI summary con MRR/ARR/margine. Rinnovo e terminazione automatica." },
       { icon: "💹", title: "Analisi Costi Orari", description: "Margine per tecnico/cliente/intervento, tariffe vendita con markup", details: "TechnicianCost model con costo diretto/indiretto/overhead/full cost orario. Tariffe vendita con markup configurabile. Analisi margine per tecnico, cliente e singolo intervento. Pagina analytics con grafici Recharts." },
-      { icon: "📉", title: "Revenue Intelligence", description: "MRR, churn prediction AI, LTV per cliente, forecast 3/6/12 mesi", details: "MRR/ARR tracking da contratti, canoni e servizi ricorrenti. Churn prediction con AI. Lifetime Value per cliente calcolato automaticamente. Revenue forecast a 3, 6 e 12 mesi. Dashboard CFO con alerting finanziario." },
+      { icon: "📉", title: "Revenue Intelligence", description: "MRR, churn prediction AI, LTV per cliente, forecast 3/6/12 mesi", details: "MRR/ARR tracking da contratti, canoni e servizi ricorrenti. Churn prediction con AI. Lifetime Value per cliente calcolato automaticamente. Revenue forecast a 3, 6 e 12 mesi. Dashboard con alerting finanziario." },
     ]
   },
   {
@@ -53,7 +53,7 @@ const categories = [
     name: "Portale Cliente",
     description: "Self-service, trasparenza e soddisfazione per i tuoi clienti.",
     features: [
-      { icon: "🌐", title: "Portal v2", description: "Ticket wizard, storico unificato, documenti con firma, pagamenti Stripe", details: "Form ticket wizard multi-step con categorizzazione e priorita suggerita. Storico unificato (ticket/rapportini/contratti/fatture/comunicazioni). Documenti condivisi con firma digitale. Pagamenti online Stripe. CSAT survey integrata. Knowledge base self-service." },
+      { icon: "🌐", title: "Portal v2", description: "Ticket wizard, storico unificato, documenti con firma, pagamenti Stripe", details: "Form ticket wizard multi-step con categorizzazione e priorita suggerita. Storico unificato (ticket/rapportini/contratti/comunicazioni). Documenti condivisi con firma digitale. Pagamenti online Stripe. CSAT survey integrata. Knowledge base self-service." },
       { icon: "❤️", title: "Health Score", description: "Score 0-100 automatico, ranking clienti con trend, alert soglia", details: "Score automatico 0-100 basato su 7 fattori: SLA (25%), ticket (15%), asset (15%), backup (15%), contratto (10%), pagamenti (10%), CSAT (10%). Ranking clienti con trend temporale. Alert automatici su soglia configurabile. Storico score." },
       { icon: "📊", title: "SLA Analytics", description: "Report mensile PDF, uptime %, benchmark anonimo, alert peggioramento", details: "Report mensile PDF per cliente con uptime, SLA %, ore consumate e trend 6 mesi. Email schedulata il primo del mese. Dashboard SLA visibile dal portale. Benchmark anonimo tra clienti. Alert proattivo su peggioramento performance." },
       { icon: "📚", title: "Knowledge Base", description: "Self-service, FAQ automatiche, chatbot AI, suggerimenti da ticket risolti", details: "Articoli organizzati per categorie con ricerca full-text. Auto-generazione articoli da ticket risolti tramite AI. Suggerimento soluzione su nuovi ticket. Deduplicazione AI e scoring qualita. FAQ automatiche per il portale cliente." },
@@ -86,7 +86,7 @@ const categories = [
 
 <PageLayout
   title="Funzionalita — DeskCore"
-  description="Scopri i 70+ moduli di DeskCore: ticketing, asset, CRM, fatturazione, security, AI e molto altro."
+  description="Scopri i 70+ moduli di DeskCore: ticketing, asset, CRM, contratti, security, AI e molto altro."
 >
   <!-- Hero -->
   <section class="section features-hero">
