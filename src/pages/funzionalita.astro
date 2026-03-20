@@ -1,6 +1,5 @@
 ---
 import PageLayout from '../layouts/PageLayout.astro';
-import FeatureCard from '../components/FeatureCard.astro';
 
 const categories = [
   {
@@ -8,11 +7,11 @@ const categories = [
     name: "Gestione Operativa",
     description: "Tutto il necessario per gestire l'operativita quotidiana del tuo MSP.",
     features: [
-      { icon: "🎫", title: "Ticketing + SLA", description: "Smart assignment, Kanban, escalation automatica, merge ticket, notifiche real-time" },
-      { icon: "📋", title: "Rapportini", description: "5 template PDF, firma cliente digitale, calcolo trasferte, timer, AI, workflow approvazione" },
-      { icon: "🖥️", title: "Asset Management", description: "Vista ad albero, cronologia interventi, QR code, monitoring HTTP/ping, wiki aziendale" },
-      { icon: "📅", title: "Calendario Tecnici", description: "Vista per risorsa, drag&drop, Gantt risorse, input vocale, conflitti automatici" },
-      { icon: "📊", title: "Progetti e Commesse", description: "Kanban, burndown chart, Gantt, sub-task, budget vs actual, collaboratori" },
+      { icon: "🎫", title: "Ticketing + SLA", description: "Smart assignment, Kanban, escalation automatica, merge ticket, notifiche real-time", details: "Gestione completa dei ticket con assegnazione intelligente basata su competenze e carico di lavoro. Vista Kanban drag&drop tra stati, escalation automatica per SLA in scadenza, merge di ticket duplicati con spostamento commenti/allegati. Notifiche in tempo reale via email, Telegram e push browser." },
+      { icon: "📋", title: "Rapportini", description: "5 template PDF, firma cliente digitale, calcolo trasferte, timer, AI, workflow approvazione", details: "5 template PDF professionali (infographic, classic, minimal, field tech, consuntivo). Firma cliente digitale con link pubblico e audit trail. Calcolo automatico trasferte (km, tempo andata/ritorno), timer integrato, pause intervento. AI per riepilogo e suggerimento tag. Workflow approvazione con Kanban 5 colonne." },
+      { icon: "🖥️", title: "Asset Management", description: "Vista ad albero, cronologia interventi, QR code, monitoring HTTP/ping, wiki aziendale", details: "Inventario asset con vista ad albero gerarchica per ambito/sede, navigazione drag&drop tra gruppi. Cronologia completa interventi per asset, generazione QR code per identificazione rapida. Monitoring HTTP/ping con alert automatici e storico uptime. Wiki aziendale per documentazione tecnica." },
+      { icon: "📅", title: "Calendario Tecnici", description: "Vista per risorsa, drag&drop, Gantt risorse, input vocale, conflitti automatici", details: "4 viste (mese/settimana/giorno/per tecnico) con drag&drop per riassegnazione. Gantt risorse con righe per tecnico e barre per eventi. Input vocale per creazione rapida eventi. Rilevamento automatico conflitti con banner non bloccante. Template eventi rapidi e contatore ore giornaliere." },
+      { icon: "📊", title: "Progetti e Commesse", description: "Kanban, burndown chart, Gantt, sub-task, budget vs actual, collaboratori", details: "Board Kanban con card arricchite (ore, progresso, avatar, deadline). Burndown/burnup chart e KPI velocita. Gantt semplificato con dipendenze predecessore/successore. Sub-task sortable fino a 2 livelli. Tab Economico con budget vs actual e margine. Collaboratori multipli e follower." },
     ]
   },
   {
@@ -20,11 +19,11 @@ const categories = [
     name: "Commerciale & CRM",
     description: "Pipeline, preventivi e contratti per far crescere il tuo business.",
     features: [
-      { icon: "📈", title: "Pipeline Commerciale", description: "Lead, opportunita, conversione, forecast pesato, performance per commerciale" },
-      { icon: "📝", title: "Preventivi Intelligenti", description: "Wizard 3 step, firma digitale, suggerimenti AI prodotti correlati, template editor" },
-      { icon: "📄", title: "Contratti MSP", description: "7 template predefiniti, monte ore con barre progresso, residui granulari, PDF pro" },
-      { icon: "🎯", title: "Campagne", description: "Kanban fasi, KPI target vs actual, 6 tipi campagna, budget e obiettivi" },
-      { icon: "🔗", title: "Cross-Selling Matrix", description: "Griglia clienti x servizi, tasso penetrazione, navigazione diretta" },
+      { icon: "📈", title: "Pipeline Commerciale", description: "Lead, opportunita, conversione, forecast pesato, performance per commerciale", details: "Gestione completa lead e opportunita con Kanban conversione. Import lead da CSV. Cruscotto commerciale con 6 KPI, funnel conversione, analisi per categoria. Performance per commerciale con ranking e conversion rate. Pipeline forecast pesato per probabilita con previsione 3 mesi." },
+      { icon: "📝", title: "Preventivi Intelligenti", description: "Wizard 3 step, firma digitale, suggerimenti AI prodotti correlati, template editor", details: "Wizard 3 step (preventivo → dati → riepilogo con firma). Suggerimenti AI prodotti correlati basati su co-occorrenza storica. Firma digitale cliente con link pubblico, audit trail e PDF con firma overlay. Template editor WYSIWYG con variabili. Condizioni fornitura/garanzia/pagamento editabili." },
+      { icon: "📄", title: "Contratti MSP", description: "7 template predefiniti, monte ore con barre progresso, residui granulari, PDF pro", details: "7 template contrattuali MSP predefiniti con card visive. Monte ore con barre progresso colorate e residui granulari (unita/giornate/mezze giornate). PDF professionale generato automaticamente. Collegamento a preventivi e fatturazione." },
+      { icon: "🎯", title: "Campagne", description: "Kanban fasi, KPI target vs actual, 6 tipi campagna, budget e obiettivi", details: "Campagne commerciali con 5 fasi default e Kanban drag&drop membri tra fasi. 6 tipi campagna (acquisition, retention, upsell, cross-sell, reactivation, other). Dashboard KPI con membri/target lead/deal/conversione. Statistiche per fase con tassi conversione e tempi medi." },
+      { icon: "🔗", title: "Cross-Selling Matrix", description: "Griglia clienti x servizi, tasso penetrazione, navigazione diretta", details: "Matrice visuale clienti × servizi con stato colorato (attivo/preventivato/perso/non attivo). Tasso penetrazione per servizio calcolato automaticamente. Click-to-entity per navigazione diretta. Filtro per categoria servizio." },
     ]
   },
   {
@@ -32,10 +31,10 @@ const categories = [
     name: "Fatturazione & Finance",
     description: "Dalla fatturazione automatica all'analisi finanziaria avanzata.",
     features: [
-      { icon: "🧾", title: "Fatture in Cloud", description: "Integrazione nativa bidirezionale, import clienti, righe fatturabili, bozze" },
-      { icon: "🔄", title: "Canoni e Noleggi", description: "Ricorrenza configurabile, MRR/ARR tracking, fatturazione automatica cron" },
-      { icon: "💹", title: "Analisi Costi Orari", description: "Margine per tecnico/cliente/intervento, tariffe vendita con markup" },
-      { icon: "📉", title: "Revenue Intelligence", description: "MRR, churn prediction AI, LTV per cliente, forecast 3/6/12 mesi" },
+      { icon: "🧾", title: "Fatture in Cloud", description: "Integrazione nativa bidirezionale, import clienti, righe fatturabili, bozze", details: "Sync bidirezionale con Fatture in Cloud: export clienti, import clienti con dedup P.IVA/CF, creazione sedi. Righe fatturabili da rapportini ed export diretto. Creazione bozze fattura. 6 pagine UI dedicate alla gestione fatturazione." },
+      { icon: "🔄", title: "Canoni e Noleggi", description: "Ricorrenza configurabile, MRR/ARR tracking, fatturazione automatica cron", details: "Pagamenti ricorrenti con 7 tipi (subscription, rental, license, maintenance, hosting, support, other). 4 frequenze (monthly/quarterly/semiannual/annual). Fatturazione automatica con cron giornaliero. KPI summary con MRR/ARR/margine. Rinnovo e terminazione automatica." },
+      { icon: "💹", title: "Analisi Costi Orari", description: "Margine per tecnico/cliente/intervento, tariffe vendita con markup", details: "TechnicianCost model con costo diretto/indiretto/overhead/full cost orario. Tariffe vendita con markup configurabile. Analisi margine per tecnico, cliente e singolo intervento. Pagina analytics con grafici Recharts." },
+      { icon: "📉", title: "Revenue Intelligence", description: "MRR, churn prediction AI, LTV per cliente, forecast 3/6/12 mesi", details: "MRR/ARR tracking da contratti, canoni e servizi ricorrenti. Churn prediction con AI. Lifetime Value per cliente calcolato automaticamente. Revenue forecast a 3, 6 e 12 mesi. Dashboard CFO con alerting finanziario." },
     ]
   },
   {
@@ -43,10 +42,10 @@ const categories = [
     name: "Security & Compliance",
     description: "Sicurezza avanzata e conformita normativa per i tuoi clienti.",
     features: [
-      { icon: "🔍", title: "Security Intelligence", description: "Eventi, correlazione incidenti, incident actions, MTTR dashboard" },
-      { icon: "⚠️", title: "Threat Indicators", description: "Database minacce IP/domain/hash, feed esterni, match automatico asset" },
-      { icon: "✅", title: "Compliance", description: "Framework GDPR, ISO 27001, NIS2, audit trail, data retention, report PDF" },
-      { icon: "📡", title: "Monitoring", description: "HTTP/ping check, alert automatici, storico uptime, dashboard portale" },
+      { icon: "🔍", title: "Security Intelligence", description: "Eventi, correlazione incidenti, incident actions, MTTR dashboard", details: "SecurityEvent model con correlazione automatica eventi → incidenti. Incident actions: crea ticket, assegna tecnico, notifica. Security dashboard con MTTR (Mean Time to Resolve). Integrazione con health score portale cliente." },
+      { icon: "⚠️", title: "Threat Indicators", description: "Database minacce IP/domain/hash, feed esterni, match automatico asset", details: "ThreatIndicator con 5 tipi (IP/domain/hash/URL/email). Feed esterni opzionali (AlienVault OTX, AbuseIPDB) con sync automatico. Match automatico con asset aziendali. Import da CSV e formato STIX." },
+      { icon: "✅", title: "Compliance", description: "Framework GDPR, ISO 27001, NIS2, audit trail, data retention, report PDF", details: "Framework template per GDPR, ISO 27001 e NIS2. Compliance score per cliente per framework. Audit trail con diff visuale di ogni modifica. Report PDF per audit esterni. Data retention policies configurabili. Strumenti GDPR integrati." },
+      { icon: "📡", title: "Monitoring", description: "HTTP/ping check, alert automatici, storico uptime, dashboard portale", details: "Monitoraggio HTTP e ping check su asset configurati. Alert automatici su downtime con notifiche multi-canale. Storico uptime con grafici. Dashboard visibile anche dal portale cliente per trasparenza SLA." },
     ]
   },
   {
@@ -54,10 +53,10 @@ const categories = [
     name: "Portale Cliente",
     description: "Self-service, trasparenza e soddisfazione per i tuoi clienti.",
     features: [
-      { icon: "🌐", title: "Portal v2", description: "Ticket wizard, storico unificato, documenti con firma, pagamenti Stripe" },
-      { icon: "❤️", title: "Health Score", description: "Score 0-100 automatico, ranking clienti con trend, alert soglia" },
-      { icon: "📊", title: "SLA Analytics", description: "Report mensile PDF, uptime %, benchmark anonimo, alert peggioramento" },
-      { icon: "📚", title: "Knowledge Base", description: "Self-service, FAQ automatiche, chatbot AI, suggerimenti da ticket risolti" },
+      { icon: "🌐", title: "Portal v2", description: "Ticket wizard, storico unificato, documenti con firma, pagamenti Stripe", details: "Form ticket wizard multi-step con categorizzazione e priorita suggerita. Storico unificato (ticket/rapportini/contratti/fatture/comunicazioni). Documenti condivisi con firma digitale. Pagamenti online Stripe. CSAT survey integrata. Knowledge base self-service." },
+      { icon: "❤️", title: "Health Score", description: "Score 0-100 automatico, ranking clienti con trend, alert soglia", details: "Score automatico 0-100 basato su 7 fattori: SLA (25%), ticket (15%), asset (15%), backup (15%), contratto (10%), pagamenti (10%), CSAT (10%). Ranking clienti con trend temporale. Alert automatici su soglia configurabile. Storico score." },
+      { icon: "📊", title: "SLA Analytics", description: "Report mensile PDF, uptime %, benchmark anonimo, alert peggioramento", details: "Report mensile PDF per cliente con uptime, SLA %, ore consumate e trend 6 mesi. Email schedulata il primo del mese. Dashboard SLA visibile dal portale. Benchmark anonimo tra clienti. Alert proattivo su peggioramento performance." },
+      { icon: "📚", title: "Knowledge Base", description: "Self-service, FAQ automatiche, chatbot AI, suggerimenti da ticket risolti", details: "Articoli organizzati per categorie con ricerca full-text. Auto-generazione articoli da ticket risolti tramite AI. Suggerimento soluzione su nuovi ticket. Deduplicazione AI e scoring qualita. FAQ automatiche per il portale cliente." },
     ]
   },
   {
@@ -65,10 +64,10 @@ const categories = [
     name: "AI & Automazione",
     description: "Intelligenza artificiale e automazioni per lavorare meno e meglio.",
     features: [
-      { icon: "🧠", title: "AI Copilot", description: "Suggerimenti proattivi rinnovi/manutenzione, digest giornaliero, sentiment analysis" },
-      { icon: "⚡", title: "Automazioni", description: "38+ trigger, 13 azioni, condition builder, dry-run, dashboard analytics" },
-      { icon: "🔮", title: "Manutenzione Predittiva", description: "Pattern detection, scoring rischio guasto, interventi preventivi, ROI" },
-      { icon: "🗺️", title: "Smart Scheduling", description: "GPS, competenze, carico, SLA, auto-dispatch, ottimizzazione percorso" },
+      { icon: "🧠", title: "AI Copilot", description: "Suggerimenti proattivi rinnovi/manutenzione, digest giornaliero, sentiment analysis", details: "Suggerimenti automatici proattivi su rinnovi, manutenzione e carico di lavoro. Widget dashboard con suggerimenti AI. Digest giornaliero via email e Telegram. Analisi sentiment dei ticket per identificare clienti insoddisfatti. Multi-turn conversation con history." },
+      { icon: "⚡", title: "Automazioni", description: "38+ trigger, 13 azioni, condition builder, dry-run, dashboard analytics", details: "38+ trigger (26 base + 8 task + 4 project + inactivity + volume spike). 13 azioni disponibili. Condition builder con operatori async. Anti-loop protection. Gruppi con toggle, variabili e costanti. Ricorrenza (daily/weekly/monthly). Dry-run e test mode. Dashboard analytics con grafici." },
+      { icon: "🔮", title: "Manutenzione Predittiva", description: "Pattern detection, scoring rischio guasto, interventi preventivi, ROI", details: "Pattern detection sullo storico alert ed eventi. Scoring rischio guasto basato su eta, MTBF e storico. Dashboard predittiva con visualizzazione rischio. Generazione automatica interventi preventivi. ROI tracking per misurare il risparmio." },
+      { icon: "🗺️", title: "Smart Scheduling", description: "GPS, competenze, carico, SLA, auto-dispatch, ottimizzazione percorso", details: "Algoritmo assegnazione multi-fattore: competenze tecniche, posizione GPS, carico di lavoro, urgenza SLA, PTO. Vista mappa dispatch con pin tecnici. Ottimizzazione percorso per minimizzare spostamenti. Auto-dispatch su nuovi ticket. ETA basata su GPS." },
     ]
   },
   {
@@ -76,10 +75,10 @@ const categories = [
     name: "Piattaforma",
     description: "Personalizzazione, integrazioni e controllo totale.",
     features: [
-      { icon: "🏷️", title: "White-label", description: "Dominio custom, branding completo, rimozione riferimenti DeskCore" },
-      { icon: "🔌", title: "API Pubblica", description: "REST, OpenAPI, SDK, rate limiting per piano, 17 scope per modulo" },
-      { icon: "🛒", title: "Marketplace", description: "16 connettori, 6 categorie: RMM, PSA, Security, Backup, Contabilita, Communication" },
-      { icon: "🔑", title: "SSO/SAML", description: "Single sign-on, auto-provisioning utenti, config per tenant" },
+      { icon: "🏷️", title: "White-label", description: "Dominio custom, branding completo, rimozione riferimenti DeskCore", details: "Portale cliente completamente brandizzato: titolo, descrizione, footer, termini/privacy URL personalizzabili. Configurazione dominio custom e email. Rimozione completa riferimenti DeskCore. 6 temi colore predefiniti + color picker custom. Upload favicon e logo." },
+      { icon: "🔌", title: "API Pubblica", description: "REST, OpenAPI, SDK, rate limiting per piano, 17 scope per modulo", details: "API Key management con SHA-256 hashing. 17 scope per modulo per controllo granulare. Rate limiting per piano (free 100/h → enterprise 100k/h). CRUD chiavi con scadenza configurabile. Documentazione endpoint completa. Pagina gestione API keys." },
+      { icon: "🛒", title: "Marketplace", description: "16 connettori, 6 categorie: RMM, PSA, Security, Backup, Contabilita, Communication", details: "Framework connettori standardizzato con 16 connettori in catalogo. 6 categorie: RMM, PSA, Security, Backup, Contabilita, Communication. Install/config/toggle/test/uninstall per ogni connettore. Marketplace page con filtri e card. Configurazione in tenant settings." },
+      { icon: "🔑", title: "SSO/SAML", description: "Single sign-on, auto-provisioning utenti, config per tenant", details: "SAML 2.0 completo con SAMLRequest generation e response parsing. Auto-provisioning utenti al primo login SSO. Configurazione per tenant: entryPoint, issuer, certificate, defaultRole. Check endpoint per verifica. Redirect flow con token JWT." },
     ]
   }
 ];
@@ -116,13 +115,56 @@ const categories = [
 
         <div class="features-grid">
           {cat.features.map((f) => (
-            <FeatureCard icon={f.icon} title={f.title} description={f.description} />
+            <div class="feature-card card" data-expandable>
+              <div class="feature-card__header">
+                <div class="feature-icon">{f.icon}</div>
+                <h3 class="feature-title">{f.title}</h3>
+                <p class="feature-desc">{f.description}</p>
+              </div>
+              <div class="feature-card__details" data-details>
+                <div class="feature-card__details-inner">
+                  <p>{f.details}</p>
+                </div>
+              </div>
+              <button class="feature-card__toggle" data-toggle aria-expanded="false">
+                <span class="feature-card__toggle-text">Scopri di piu</span>
+                <svg class="feature-card__chevron" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+            </div>
           ))}
         </div>
       </div>
     </section>
   ))}
 </PageLayout>
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+    document.querySelectorAll('[data-expandable]').forEach((card) => {
+      const toggle = card.querySelector('[data-toggle]') as HTMLButtonElement;
+      const details = card.querySelector('[data-details]') as HTMLElement;
+      const toggleText = card.querySelector('.feature-card__toggle-text') as HTMLElement;
+
+      toggle?.addEventListener('click', () => {
+        const isOpen = card.classList.contains('expanded');
+
+        if (isOpen) {
+          card.classList.remove('expanded');
+          details.style.maxHeight = '0';
+          toggle.setAttribute('aria-expanded', 'false');
+          if (toggleText) toggleText.textContent = 'Scopri di piu';
+        } else {
+          card.classList.add('expanded');
+          details.style.maxHeight = details.scrollHeight + 'px';
+          toggle.setAttribute('aria-expanded', 'true');
+          if (toggleText) toggleText.textContent = 'Mostra meno';
+        }
+      });
+    });
+  });
+</script>
 
 <style>
   .features-hero {
@@ -182,6 +224,92 @@ const categories = [
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 1.25rem;
+  }
+
+  /* Expandable Feature Card */
+  .feature-card {
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+    position: relative;
+  }
+
+  .feature-icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--accent-light);
+    border-radius: var(--radius-sm);
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+  }
+
+  .feature-title {
+    font-family: var(--font-body);
+    font-size: 1.0625rem;
+    font-weight: 600;
+    line-height: 1.3;
+    margin-bottom: 0.5rem;
+    color: var(--ink);
+  }
+
+  .feature-desc {
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    color: var(--gray-600);
+    margin: 0;
+  }
+
+  /* Details (expandable) */
+  .feature-card__details {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.33, 1, 0.68, 1);
+  }
+
+  .feature-card__details-inner {
+    padding-top: 1rem;
+    border-top: 1px solid var(--gray-200);
+    margin-top: 1rem;
+  }
+
+  .feature-card__details-inner p {
+    font-size: 0.875rem;
+    line-height: 1.7;
+    color: var(--gray-500);
+    margin: 0;
+  }
+
+  /* Toggle button */
+  .feature-card__toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    margin-top: 1rem;
+    padding: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: var(--font-body);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--accent);
+    transition: color 0.2s var(--ease-out);
+  }
+
+  .feature-card__toggle:hover {
+    color: var(--accent-dark);
+  }
+
+  .feature-card__chevron {
+    transition: transform 0.3s var(--ease-out);
+    flex-shrink: 0;
+  }
+
+  .feature-card.expanded .feature-card__chevron {
+    transform: rotate(180deg);
   }
 
   @media (max-width: 640px) {
