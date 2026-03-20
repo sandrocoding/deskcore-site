@@ -2,10 +2,11 @@
 ---
 
 <section class="hero">
+  <div class="hero__glow" aria-hidden="true"></div>
   <div class="container hero__inner">
     <span class="badge badge-accent">70+ moduli integrati</span>
     <h1 class="hero__title">
-      Smetti di gestire il tuo MSP<br />con 10 tool diversi.
+      Smetti di gestire il tuo MSP<br /><span class="gradient-text">con 10 tool diversi.</span>
     </h1>
     <p class="hero__subtitle">
       DeskCore unifica ticketing, asset, contratti, fatturazione, portale cliente
@@ -23,19 +24,35 @@
 
 <style>
   .hero {
-    background: linear-gradient(180deg, var(--warm) 0%, var(--paper) 100%);
-    background-size: 200% 200%;
-    animation: heroGradientShift 20s ease infinite;
+    background: var(--paper);
     padding: 8rem 0 6rem;
     text-align: center;
     position: relative;
     overflow: hidden;
   }
 
-  @keyframes heroGradientShift {
-    0% { background-position: 50% 0%; }
-    50% { background-position: 50% 100%; }
-    100% { background-position: 50% 0%; }
+  /* Radial glow behind the hero */
+  .hero__glow {
+    position: absolute;
+    top: -30%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 800px;
+    height: 600px;
+    background: radial-gradient(
+      ellipse at center,
+      rgba(124, 58, 237, 0.12) 0%,
+      rgba(99, 102, 241, 0.06) 40%,
+      transparent 70%
+    );
+    pointer-events: none;
+    z-index: 0;
+    animation: glowPulse 8s ease-in-out infinite alternate;
+  }
+
+  @keyframes glowPulse {
+    0% { opacity: 0.7; transform: translateX(-50%) scale(1); }
+    100% { opacity: 1; transform: translateX(-50%) scale(1.1); }
   }
 
   .hero::before {
@@ -108,6 +125,11 @@
 
     .hero__ctas .btn {
       width: 100%;
+    }
+
+    .hero__glow {
+      width: 500px;
+      height: 400px;
     }
   }
 </style>
