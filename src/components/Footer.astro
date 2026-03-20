@@ -24,7 +24,8 @@ const legale = [
       <!-- Brand column -->
       <div class="footer-brand">
         <a href="/" class="footer-logo">
-          <span class="footer-logo__text">DeskCore</span>
+          <span class="footer-logo__text"><span class="footer-logo__desk">Desk</span><span class="footer-logo__core">Core</span></span>
+          <span class="footer-logo__sub">IT Management Platform</span>
         </a>
         <p class="footer-tagline">Il gestionale IT per MSP italiani.</p>
       </div>
@@ -94,7 +95,9 @@ const legale = [
   .footer-logo {
     text-decoration: none;
     display: inline-flex;
-    align-items: center;
+    flex-direction: column;
+    transition: opacity 0.2s ease;
+    line-height: 1;
   }
 
   .footer-logo:hover {
@@ -105,11 +108,29 @@ const legale = [
     font-family: var(--font-body);
     font-size: 1.5rem;
     font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+
+  .footer-logo__desk {
+    color: var(--gradient-end);
+  }
+
+  .footer-logo__core {
     background: linear-gradient(135deg, var(--gradient-start), var(--gradient-mid), var(--gradient-end));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    letter-spacing: -0.02em;
+  }
+
+  .footer-logo__sub {
+    font-family: var(--font-body);
+    font-size: 0.55rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gray-500);
+    margin-top: 2px;
   }
 
   .footer-tagline {

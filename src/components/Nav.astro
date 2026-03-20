@@ -12,7 +12,8 @@ const links = [
   <div class="nav-inner container">
     <!-- Logo -->
     <a href="/" class="nav-logo">
-      <span class="nav-logo__text">DeskCore</span>
+      <span class="nav-logo__text"><span class="nav-logo__desk">Desk</span><span class="nav-logo__core">Core</span></span>
+      <span class="nav-logo__sub">IT Management Platform</span>
     </a>
 
     <!-- Desktop links -->
@@ -90,9 +91,10 @@ const links = [
   .nav-logo {
     text-decoration: none;
     display: flex;
-    align-items: center;
+    flex-direction: column;
     flex-shrink: 0;
     transition: opacity 0.2s ease;
+    line-height: 1;
   }
 
   .nav-logo:hover {
@@ -103,11 +105,29 @@ const links = [
     font-family: var(--font-body);
     font-size: 1.75rem;
     font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+
+  .nav-logo__desk {
+    color: var(--gradient-end);
+  }
+
+  .nav-logo__core {
     background: linear-gradient(135deg, var(--gradient-start), var(--gradient-mid), var(--gradient-end));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    letter-spacing: -0.02em;
+  }
+
+  .nav-logo__sub {
+    font-family: var(--font-body);
+    font-size: 0.6rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gray-500);
+    margin-top: 2px;
   }
 
   /* Desktop links */
