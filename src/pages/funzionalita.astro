@@ -141,7 +141,7 @@ const categories = [
 </PageLayout>
 
 <script>
-  document.addEventListener('astro:page-load', () => {
+  document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('[data-expandable]').forEach((card) => {
       const toggle = card.querySelector('[data-toggle]') as HTMLButtonElement;
       const details = card.querySelector('[data-details]') as HTMLElement;

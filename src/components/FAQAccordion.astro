@@ -107,7 +107,7 @@ const { items } = Astro.props;
 </style>
 
 <script>
-  document.addEventListener('astro:page-load', () => {
+  document.addEventListener('DOMContentLoaded', () => {
     const items = document.querySelectorAll('[data-faq-item]');
 
     items.forEach((item) => {

@@ -342,7 +342,7 @@ import PageLayout from '../layouts/PageLayout.astro';
 </style>
 
 <script>
-  document.addEventListener('astro:page-load', () => {
+  document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('contactForm') as HTMLFormElement;
     const success = document.getElementById('formSuccess');
 
