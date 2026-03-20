@@ -72,11 +72,12 @@ const plans = [
 
 <section class="section pricing" id="pricing">
   <div class="container">
-    <div class="pricing__header">
+    <div class="pricing__header fade-up">
+      <span class="badge badge-accent">Prezzi</span>
       <h2 class="pricing__title">Scegli il piano giusto per il tuo MSP</h2>
     </div>
 
-    <div class="pricing__toggle">
+    <div class="pricing__toggle fade-up">
       <span class="pricing__toggle-label" data-period="monthly">Mensile</span>
       <button class="pricing__switch" id="pricing-switch" aria-label="Cambia periodo di abbonamento">
         <span class="pricing__switch-thumb"></span>
@@ -87,8 +88,8 @@ const plans = [
     </div>
 
     <div class="pricing__grid">
-      {plans.map((plan) => (
-        <div class:list={["pricing__card card fade-up", plan.highlighted && "pricing__card--highlighted"]}>
+      {plans.map((plan, i) => (
+        <div class:list={["pricing__card card fade-up", `stagger-${i + 1}`, plan.highlighted && "pricing__card--highlighted"]}>
           {plan.badge && <span class="badge badge-accent pricing__badge">{plan.badge}</span>}
           <h3 class="pricing__plan-name">{plan.name}</h3>
           <p class="pricing__plan-desc">{plan.description}</p>
@@ -109,8 +110,8 @@ const plans = [
           <a href="#" class:list={[plan.ctaClass, "pricing__cta"]}>{plan.cta}</a>
 
           <ul class="pricing__features">
-            {plan.features.map((f) => (
-              <li class="pricing__feature">
+            {plan.features.map((f, fi) => (
+              <li class:list={["pricing__feature fade-up", `stagger-${Math.min(fi + 1, 10)}`]}>
                 <svg class="pricing__check" width="16" height="16" viewBox="0 0 16 16" fill="none">
                   <path d="M3 8.5L6.5 12L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
@@ -166,6 +167,7 @@ const plans = [
     font-family: var(--font-display);
     font-size: 2.5rem;
     color: var(--ink);
+    margin-top: 1rem;
   }
 
   .pricing__toggle {

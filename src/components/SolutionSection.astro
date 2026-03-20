@@ -92,8 +92,8 @@ const categories = [
           {cat.name}
         </h3>
         <div class="solution__modules">
-          {cat.modules.map((mod) => (
-            <div class="solution__module">
+          {cat.modules.map((mod, j) => (
+            <div class:list={["solution__module fade-up", `stagger-${j + 1}`]}>
               <span class="solution__mod-name">{mod.name}</span>
               <span class="solution__mod-desc">{mod.desc}</span>
             </div>

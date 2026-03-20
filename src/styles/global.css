@@ -447,6 +447,10 @@ input:focus, textarea:focus, select:focus {
 .stagger-4 { transition-delay: 0.2s; }
 .stagger-5 { transition-delay: 0.25s; }
 .stagger-6 { transition-delay: 0.3s; }
+.stagger-7 { transition-delay: 0.35s; }
+.stagger-8 { transition-delay: 0.4s; }
+.stagger-9 { transition-delay: 0.45s; }
+.stagger-10 { transition-delay: 0.5s; }
 
 /* ── Section divider glow ─────────────────────────── */
 
