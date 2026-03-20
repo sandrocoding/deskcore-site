@@ -1,0 +1,113 @@
+---
+---
+
+<section class="hero">
+  <div class="container hero__inner">
+    <span class="badge badge-accent">70+ moduli integrati</span>
+    <h1 class="hero__title">
+      Smetti di gestire il tuo MSP<br />con 10 tool diversi.
+    </h1>
+    <p class="hero__subtitle">
+      DeskCore unifica ticketing, asset, contratti, fatturazione, portale cliente
+      e AI in un'unica piattaforma pensata per gli MSP italiani.
+    </p>
+    <div class="hero__ctas">
+      <a href="#pricing" class="btn btn-primary">Prova gratis 14 giorni</a>
+      <a href="#demo" class="btn btn-outline">Guarda la demo</a>
+    </div>
+    <p class="hero__trust">
+      Nessuna carta di credito richiesta &middot; Setup in 5 minuti &middot; Supporto italiano
+    </p>
+  </div>
+</section>
+
+<style>
+  .hero {
+    background: linear-gradient(180deg, var(--warm) 0%, var(--paper) 100%);
+    background-size: 200% 200%;
+    animation: heroGradientShift 20s ease infinite;
+    padding: 8rem 0 6rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  @keyframes heroGradientShift {
+    0% { background-position: 50% 0%; }
+    50% { background-position: 50% 100%; }
+    100% { background-position: 50% 0%; }
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    opacity: 0.03;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .hero__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 800px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero__title {
+    font-family: var(--font-display);
+    font-size: 3.5rem;
+    color: var(--ink);
+    margin-top: 1.25rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero__subtitle {
+    font-size: 1.25rem;
+    line-height: 1.7;
+    color: var(--gray-600);
+    max-width: 640px;
+    margin-bottom: 2.5rem;
+  }
+
+  .hero__ctas {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 2rem;
+  }
+
+  .hero__trust {
+    font-size: 0.875rem;
+    color: var(--gray-400);
+    letter-spacing: 0.01em;
+  }
+
+  @media (max-width: 768px) {
+    .hero {
+      padding: 5rem 0 4rem;
+    }
+
+    .hero__title {
+      font-size: 2.25rem;
+    }
+
+    .hero__subtitle {
+      font-size: 1.0625rem;
+    }
+
+    .hero__ctas {
+      flex-direction: column;
+      width: 100%;
+      padding: 0 1rem;
+    }
+
+    .hero__ctas .btn {
+      width: 100%;
+    }
+  }
+</style>

@@ -1,0 +1,31 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  ogImage?: string;
+  canonicalUrl?: string;
+  jsonLd?: Record<string, unknown>;
+}
+
+const { title, description, ogImage, canonicalUrl, jsonLd } = Astro.props;
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  ogImage={ogImage}
+  canonicalUrl={canonicalUrl}
+  jsonLd={jsonLd}
+>
+  <Nav />
+
+  <main style={`padding-top: var(--nav-h);`}>
+    <slot />
+  </main>
+
+  <Footer />
+</BaseLayout>

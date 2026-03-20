@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://deskcore.it/sitemap-index.xml

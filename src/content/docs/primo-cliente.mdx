@@ -1,0 +1,139 @@
+---
+title: "Il tuo primo cliente"
+description: "Come creare un'azienda cliente, aggiungere contatti e sedi, e aprire il primo ticket in DeskCore."
+order: 2
+---
+
+# Il tuo primo cliente
+
+La gestione dei clienti e il cuore di ogni MSP. In DeskCore, ogni azienda cliente diventa un hub centralizzato da cui puoi accedere a contatti, sedi, asset, ticket, contratti, rapportini e molto altro. In questa guida ti accompagneremo nella creazione del tuo primo cliente, dall'anagrafica fino all'apertura del primo ticket di assistenza.
+
+---
+
+## Creare un'azienda
+
+Per aggiungere un nuovo cliente, segui questi passaggi:
+
+1. **Naviga alla sezione Clienti** dalla sidebar laterale, oppure usa la scorciatoia `Ctrl+K` e digita "Clienti".
+
+2. **Clicca su "Nuovo cliente"** (oppure usa la scorciatoia rapida `Alt+C` da qualsiasi pagina).
+
+3. **Compila i campi dell'anagrafica**:
+   - **Ragione sociale**: il nome ufficiale dell'azienda
+   - **Partita IVA**: fondamentale per la fatturazione elettronica
+   - **Codice Fiscale**: per le comunicazioni fiscali
+   - **Indirizzo completo**: via, citta, CAP, provincia
+   - **Telefono** e **Email**: i recapiti principali
+   - **Settore**: seleziona il settore di attivita (utile per segmentare i clienti e per le analisi)
+   - **Sito web**: opzionale, per riferimento rapido
+
+4. **Dati fatturazione elettronica** (sezione collassabile):
+   - **Codice destinatario (SDI)**: per la fatturazione elettronica
+   - **PEC**: posta elettronica certificata
+   - **Riferimento PA**: se il cliente e una pubblica amministrazione
+
+5. Clicca **Salva** per creare l'azienda.
+
+Dopo il salvataggio, verrai reindirizzato alla **pagina dettaglio del cliente**, che presenta un layout a tab con oltre 15 schede disponibili: Overview, Contatti, Sedi, Asset, Ticket, Rapportini, Contratti, Preventivi, Fatture, Documenti, Sicurezza, Infrastruttura, Cronologia e altre.
+
+> **Suggerimento**: nella scheda Overview troverai KPI riassuntivi, alert aggregati da tutti i moduli e quick actions per le operazioni piu frequenti.
+
+---
+
+## Aggiungere contatti
+
+Ogni azienda puo avere piu persone di riferimento. Per aggiungerle:
+
+1. Dalla pagina dettaglio del cliente, clicca sulla **tab Contatti**.
+
+2. Clicca **"Aggiungi contatto"** e compila:
+   - **Nome** e **Cognome**
+   - **Ruolo** all'interno dell'azienda (es. Responsabile IT, Amministratore, Referente tecnico)
+   - **Email** e **Telefono** diretto
+   - **Cellulare**: per comunicazioni urgenti
+   - **Note**: informazioni aggiuntive utili
+
+3. Salva il contatto.
+
+Puoi aggiungere tutti i contatti necessari. I contatti saranno disponibili come riferimento quando crei ticket, preventivi o comunicazioni legate a quell'azienda. Inoltre, i contatti possono essere invitati ad accedere al **Portale Cliente**, dove potranno aprire ticket, consultare lo stato delle riparazioni, approvare preventivi e visualizzare documenti condivisi.
+
+---
+
+## Aggiungere sedi
+
+Se il cliente ha piu sedi operative, puoi mapparle tutte in DeskCore:
+
+1. Dalla pagina dettaglio del cliente, clicca sulla **tab Sedi**.
+
+2. Clicca **"Aggiungi sede"** e compila:
+   - **Nome sede** (es. "Sede principale", "Filiale Milano", "Magazzino")
+   - **Indirizzo completo**: via, citta, CAP, provincia
+   - **Telefono** della sede
+   - **Coordinate GPS** (latitudine e longitudine): opzionali, ma utili per il geofencing e il planner visite
+   - **Raggio geofence**: definisci un'area in metri entro cui i tecnici vengono rilevati come "in sede"
+
+3. Salva la sede.
+
+Le sedi vengono utilizzate in diversi contesti: assegnazione asset, rapportini di intervento (con suggerimento automatico della sede tramite GPS), pianificazione giri e calcolo percorsi sulla mappa.
+
+> **Suggerimento**: se attivi il geofencing nelle impostazioni, i tecnici riceveranno una notifica automatica quando arrivano presso una sede cliente, rendendo piu semplice la registrazione degli interventi.
+
+---
+
+## Creare il primo contratto
+
+I contratti definiscono il perimetro dei servizi offerti al cliente. Per crearne uno:
+
+1. Naviga a **Contratti** dalla sidebar oppure dalla tab Contratti nella pagina del cliente.
+
+2. Clicca **"Nuovo contratto"** e configura:
+   - **Cliente**: seleziona l'azienda appena creata
+   - **Template**: scegli tra i 7 template MSP predefiniti (assistenza base, assistenza premium, gestione completa, etc.) — ogni template ha un'icona e colori distintivi per un riconoscimento visivo immediato
+   - **Monte ore**: definisci le ore incluse nel contratto (con unita, giornate o mezze giornate)
+   - **Data inizio** e **Data fine**: il periodo di validita
+   - **Importo** e **frequenza di fatturazione**
+   - **Note** e **condizioni particolari**
+
+3. Salva il contratto.
+
+Una volta attivo, il contratto mostrera una **barra di progresso** del monte ore utilizzato, calcolata automaticamente dai rapportini e dalle time entry collegati. Quando il consumo si avvicina al limite, DeskCore mostrera un warning visivo e potra inviare notifiche automatiche.
+
+---
+
+## Aprire il primo ticket
+
+Ora che hai un cliente con contatti, sedi e un contratto attivo, puoi aprire il primo ticket di assistenza:
+
+1. Naviga a **Ticket** dalla sidebar oppure usa `Alt+T`.
+
+2. Clicca **"Nuovo ticket"** e compila:
+   - **Oggetto**: una descrizione breve del problema
+   - **Descrizione**: dettagli completi della richiesta (supporta testo ricco)
+   - **Cliente**: seleziona l'azienda
+   - **Priorita**: scegli tra Critica, Alta, Media, Bassa — questo determinera i tempi SLA applicati
+   - **Tecnico assegnato**: seleziona manualmente oppure usa il **suggerimento intelligente** che propone i 3 migliori candidati in base a competenze, carico di lavoro e disponibilita (tenendo conto delle ferie)
+   - **Categoria** e **Sede**: per una classificazione precisa
+   - **Asset collegato**: se il ticket riguarda un dispositivo specifico
+
+3. Clicca **Salva**.
+
+Il ticket apparira nella lista e, se hai configurato le SLA, il timer di risposta partira immediatamente. Puoi seguire l'avanzamento nella **vista Kanban** con drag & drop tra gli stati, oppure nella vista lista con filtri rapidi per tecnico, cliente, priorita e stato SLA.
+
+> **Suggerimento**: il cliente potra visualizzare lo stato del ticket dal Portale Cliente e ricevera notifiche automatiche ad ogni avanzamento.
+
+---
+
+## Consigli e best practice
+
+- **Completa l'anagrafica**: piu informazioni inserisci per ogni cliente, piu efficaci saranno le funzionalita automatiche (suggerimenti, report, fatturazione)
+- **Usa le etichette**: assegna label e tag ai clienti per segmentarli facilmente (es. "Premium", "PA", "Healthcare")
+- **Configura le notifiche**: nella sezione Impostazioni, attiva le notifiche Telegram e email per restare aggiornato in tempo reale
+- **Invita il cliente al portale**: dalla pagina del cliente, usa "Invita al portale" per dare accesso diretto al referente dell'azienda
+- **Esplora le tab**: ogni scheda della pagina cliente offre funzionalita specifiche — dalla sicurezza alla mappa infrastrutturale, dalla cronologia globale ai documenti protetti
+
+---
+
+## Prossimi passi
+
+- **[Configurazione SLA](/docs/configurazione-sla)**: imposta le policy SLA per garantire tempi di risposta adeguati
+- **[Getting Started](/docs/getting-started)**: torna alla guida iniziale se hai bisogno di rivedere la configurazione base

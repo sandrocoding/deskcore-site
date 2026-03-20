@@ -1,0 +1,123 @@
+---
+const painPoints = [
+  {
+    icon: "🔀",
+    title: "Usi 10 tool diversi che non parlano tra loro",
+    description: "CRM da una parte, ticketing dall'altra, fatturazione su Excel. Ogni giorno perdi tempo a copiare dati tra sistemi che non si integrano."
+  },
+  {
+    icon: "⏱️",
+    title: "Le ore non fatturate spariscono",
+    description: "Senza tracciamento automatico, perdi il 20-30% del lavoro fatturabile. Ore di assistenza che nessuno registra, margini che evaporano."
+  },
+  {
+    icon: "📞",
+    title: "I clienti ti chiamano per sapere 'a che punto siamo'",
+    description: "Senza portale self-service, il telefono squilla in continuazione. Ogni chiamata ti toglie dal lavoro che conta."
+  },
+  {
+    icon: "📊",
+    title: "Non sai se stai guadagnando o perdendo su un contratto",
+    description: "Margini, costi orari, trasferte: un buco nero. Scopri che un cliente è in perdita solo a fine anno, quando è troppo tardi."
+  },
+  {
+    icon: "⏰",
+    title: "SLA? Li controlli a mano (forse)",
+    description: "Senza automazione, le scadenze SLA saltano senza che nessuno se ne accorga. E i clienti se ne accorgono prima di te."
+  },
+  {
+    icon: "🚪",
+    title: "Quando un tecnico va via, il know-how va con lui",
+    description: "Nessuna knowledge base, nessun processo documentato. Ogni partenza è una crisi, ogni onboarding ricomincia da zero."
+  }
+];
+---
+
+<section class="section" id="problemi">
+  <div class="container">
+    <div class="problem__header">
+      <h2 class="problem__title">Ti riconosci?</h2>
+      <p class="problem__subtitle">
+        Se gestisci un MSP, almeno tre di questi problemi li vivi ogni settimana.
+      </p>
+    </div>
+    <div class="problem__grid">
+      {painPoints.map((point, i) => (
+        <div class:list={["problem__card card fade-up", `stagger-${i + 1}`]}>
+          <span class="problem__icon">{point.icon}</span>
+          <h3 class="problem__card-title">{point.title}</h3>
+          <p class="problem__card-desc">{point.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .problem__header {
+    text-align: center;
+    margin-bottom: 3.5rem;
+  }
+
+  .problem__title {
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    color: var(--ink);
+    margin-bottom: 1rem;
+  }
+
+  .problem__subtitle {
+    font-size: 1.125rem;
+    color: var(--gray-600);
+    max-width: 520px;
+    margin: 0 auto;
+  }
+
+  .problem__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .problem__card {
+    background: var(--warm);
+    border: 1px solid var(--gray-200);
+  }
+
+  .problem__icon {
+    font-size: 2rem;
+    display: block;
+    margin-bottom: 1rem;
+  }
+
+  .problem__card-title {
+    font-family: var(--font-body);
+    font-size: 1.0625rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 0.75rem;
+    line-height: 1.35;
+  }
+
+  .problem__card-desc {
+    font-size: 0.9375rem;
+    line-height: 1.65;
+    color: var(--gray-600);
+  }
+
+  @media (max-width: 1024px) {
+    .problem__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .problem__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .problem__title {
+      font-size: 2rem;
+    }
+  }
+</style>

@@ -1,0 +1,117 @@
+---
+import PageLayout from './PageLayout.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  date: string;
+  author: string;
+  readingTime: string;
+  tags?: string[];
+}
+
+const { title, description, date, author, readingTime, tags = [] } = Astro.props;
+
+const formattedDate = new Date(date).toLocaleDateString('it-IT', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: title,
+  description,
+  datePublished: date,
+  author: {
+    '@type': 'Person',
+    name: author,
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: 'DeskCore',
+    logo: {
+      '@type': 'ImageObject',
+      url: 'https://deskcore.it/logo.svg',
+    },
+  },
+};
+---
+
+<PageLayout title={title} description={description} jsonLd={jsonLd}>
+  <article class="section">
+    <div class="container">
+      <!-- Article Header -->
+      <header class="article-header">
+        {tags.length > 0 && (
+          <div class="article-tags">
+            {tags.map((tag) => (
+              <span class="badge badge-accent">{tag}</span>
+            ))}
+          </div>
+        )}
+
+        <h1 class="article-title">{title}</h1>
+
+        <div class="article-meta">
+          <span class="article-author">{author}</span>
+          <span class="article-meta-sep" aria-hidden="true">&middot;</span>
+          <time datetime={date}>{formattedDate}</time>
+          <span class="article-meta-sep" aria-hidden="true">&middot;</span>
+          <span>{readingTime}</span>
+        </div>
+      </header>
+
+      <!-- Article Body -->
+      <div class="prose article-body">
+        <slot />
+      </div>
+    </div>
+  </article>
+</PageLayout>
+
+<style>
+  .article-header {
+    max-width: 680px;
+    margin-bottom: 3rem;
+  }
+
+  .article-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .article-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 5vw, 3.25rem);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 1.25rem;
+  }
+
+  .article-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9375rem;
+    color: var(--gray-600);
+  }
+
+  .article-author {
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  .article-meta-sep {
+    opacity: 0.4;
+  }
+
+  .article-body {
+    margin: 0;
+  }
+</style>

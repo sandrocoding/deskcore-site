@@ -1,0 +1,41 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import Hero from '../components/Hero.astro';
+import ProblemSection from '../components/ProblemSection.astro';
+import SolutionSection from '../components/SolutionSection.astro';
+import BenefitsSection from '../components/BenefitsSection.astro';
+import ObjectionsSection from '../components/ObjectionsSection.astro';
+import TestimonialsSection from '../components/TestimonialsSection.astro';
+import PricingSection from '../components/PricingSection.astro';
+import FinalCTA from '../components/FinalCTA.astro';
+
+const orgJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "DeskCore",
+  "url": "https://deskcore.it",
+  "logo": "https://deskcore.it/logo.svg",
+  "description": "Il gestionale IT per MSP italiani. Ticketing, asset, contratti, fatturazione, portale cliente e AI in un'unica piattaforma.",
+  "sameAs": [],
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "email": "info@deskcore.it",
+    "contactType": "sales"
+  }
+};
+---
+
+<PageLayout
+  title="DeskCore — Il gestionale IT per MSP"
+  description="Ticketing, asset, contratti, fatturazione, portale cliente e AI in un'unica piattaforma per MSP italiani."
+  jsonLd={orgJsonLd}
+>
+  <Hero />
+  <ProblemSection />
+  <SolutionSection />
+  <BenefitsSection />
+  <ObjectionsSection />
+  <TestimonialsSection />
+  <PricingSection />
+  <FinalCTA />
+</PageLayout>

@@ -1,0 +1,110 @@
+---
+const objections = [
+  {
+    question: "Ma io ho gia un sistema che funziona...",
+    answer: "Funziona o ci hai fatto l'abitudine? Calcola quante ore perdi ogni settimana a copiare dati tra tool diversi. Con DeskCore, quei 10 tool diventano uno. I dati fluiscono automaticamente dal ticket al rapportino alla fattura, senza un click in piu."
+  },
+  {
+    question: "Costa troppo per il mio team...",
+    answer: "Starter parte da \u20AC29/tecnico/mese. Meno del costo di un'ora di lavoro non fatturata. Il ROI medio e del 340% nel primo anno. Se recuperi anche solo 2 ore a settimana per tecnico, DeskCore si ripaga da solo."
+  },
+  {
+    question: "La migrazione sara un incubo...",
+    answer: "Import CSV per tutto, wizard guidato, onboarding assistito. La maggior parte degli MSP e operativa in 48 ore, non settimane. Il nostro team ti affianca durante la migrazione, senza costi aggiuntivi."
+  }
+];
+---
+
+<section class="section objections" id="faq">
+  <div class="container">
+    <div class="objections__header">
+      <h2 class="objections__title">Le domande che ti stai facendo</h2>
+    </div>
+
+    <div class="objections__grid">
+      {objections.map((obj, i) => (
+        <div class:list={["objections__card fade-up", `stagger-${i + 1}`]}>
+          <span class="objections__number">{String(i + 1).padStart(2, '0')}</span>
+          <h3 class="objections__question">{obj.question}</h3>
+          <p class="objections__answer">{obj.answer}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .objections__header {
+    text-align: center;
+    margin-bottom: 3.5rem;
+  }
+
+  .objections__title {
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    color: var(--ink);
+  }
+
+  .objections__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .objections__card {
+    background: var(--gray-100);
+    border-left: 4px solid var(--accent);
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s var(--ease-out), box-shadow 0.3s var(--ease-out);
+  }
+
+  .objections__card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .objections__number {
+    position: absolute;
+    top: 0.75rem;
+    right: 1rem;
+    font-family: var(--font-display);
+    font-size: 4rem;
+    color: var(--ink);
+    opacity: 0.08;
+    line-height: 1;
+    font-weight: 400;
+    user-select: none;
+    pointer-events: none;
+  }
+
+  .objections__question {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    color: var(--ink);
+    margin-bottom: 1rem;
+    line-height: 1.3;
+  }
+
+  .objections__answer {
+    font-size: 0.9375rem;
+    line-height: 1.7;
+    color: var(--gray-600);
+  }
+
+  @media (max-width: 1024px) {
+    .objections__grid {
+      grid-template-columns: 1fr;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .objections__title {
+      font-size: 2rem;
+    }
+  }
+</style>

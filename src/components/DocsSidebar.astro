@@ -1,0 +1,110 @@
+---
+const currentPath = Astro.url.pathname;
+
+const navGroups = [
+  {
+    label: 'Inizia',
+    items: [
+      { title: 'Getting Started', href: '/docs/getting-started' },
+      { title: 'Primo Cliente', href: '/docs/primo-cliente' },
+    ],
+  },
+  {
+    label: 'Configurazione',
+    items: [
+      { title: 'Configurazione SLA', href: '/docs/configurazione-sla' },
+    ],
+  },
+];
+---
+
+<aside class="docs-sidebar">
+  <h2 class="sidebar-title">Documentazione</h2>
+  <nav class="sidebar-nav">
+    {navGroups.map((group) => (
+      <div class="nav-group">
+        <span class="nav-group-label">{group.label}</span>
+        <ul class="nav-list">
+          {group.items.map((item) => (
+            <li>
+              <a
+                href={item.href}
+                class:list={['nav-link', { active: currentPath === item.href || currentPath === item.href + '/' }]}
+              >
+                {item.title}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    ))}
+  </nav>
+</aside>
+
+<style>
+  .docs-sidebar {
+    width: 240px;
+    height: 100%;
+    padding: 2rem 1.25rem;
+    border-right: 1px solid var(--gray-200);
+    background: var(--paper);
+    flex-shrink: 0;
+  }
+
+  .sidebar-title {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    color: var(--ink);
+    margin-bottom: 1.75rem;
+    line-height: 1.2;
+  }
+
+  .sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .nav-group-label {
+    display: block;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--gray-400);
+    margin-bottom: 0.5rem;
+    padding-left: 0.75rem;
+  }
+
+  .nav-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .nav-link {
+    display: block;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.875rem;
+    color: var(--gray-600);
+    text-decoration: none;
+    border-left: 2px solid transparent;
+    border-radius: 0 6px 6px 0;
+    transition: all 0.15s ease;
+  }
+
+  .nav-link:hover {
+    color: var(--ink);
+    background: var(--gray-100);
+  }
+
+  .nav-link.active {
+    color: var(--accent);
+    border-left-color: var(--accent);
+    background: var(--accent-light);
+    font-weight: 500;
+  }
+</style>

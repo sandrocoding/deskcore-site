@@ -1,0 +1,334 @@
+---
+const plans = [
+  {
+    name: "Starter",
+    monthly: "29",
+    annual: "23",
+    description: "Per MSP che iniziano a strutturarsi",
+    cta: "Inizia gratis",
+    ctaClass: "btn btn-outline",
+    highlighted: false,
+    badge: null,
+    features: [
+      "Fino a 5 tecnici",
+      "Ticketing con SLA base",
+      "Asset management",
+      "Rapportini e firma digitale",
+      "Portale cliente",
+      "Calendario e timer",
+      "Knowledge base",
+      "Email e notifiche",
+      "Supporto italiano"
+    ]
+  },
+  {
+    name: "Professional",
+    monthly: "59",
+    annual: "47",
+    description: "Per MSP in crescita che vogliono scalare",
+    cta: "Inizia gratis",
+    ctaClass: "btn btn-primary",
+    highlighted: true,
+    badge: "Piu popolare",
+    features: [
+      "Tecnici illimitati",
+      "Tutto di Starter, piu:",
+      "Pipeline e CRM completo",
+      "Preventivi con firma cliente",
+      "Contratti MSP avanzati",
+      "Fatture in Cloud integration",
+      "AI Copilot",
+      "Automazioni (38+ trigger)",
+      "Report e analytics avanzati",
+      "API pubblica",
+      "SSO/SAML"
+    ]
+  },
+  {
+    name: "Enterprise",
+    monthly: null,
+    annual: null,
+    description: "Per MSP strutturati con esigenze custom",
+    cta: "Contattaci",
+    ctaClass: "btn btn-outline",
+    highlighted: false,
+    badge: null,
+    features: [
+      "Tutto di Professional, piu:",
+      "White-label completo",
+      "Dominio custom",
+      "Marketplace connettori",
+      "Compliance GDPR/NIS2",
+      "Security intelligence",
+      "Manutenzione predittiva",
+      "Smart scheduling GPS",
+      "Onboarding dedicato",
+      "SLA supporto garantito",
+      "Account manager dedicato"
+    ]
+  }
+];
+---
+
+<section class="section pricing" id="pricing">
+  <div class="container">
+    <div class="pricing__header">
+      <h2 class="pricing__title">Scegli il piano giusto per il tuo MSP</h2>
+    </div>
+
+    <div class="pricing__toggle">
+      <span class="pricing__toggle-label" data-period="monthly">Mensile</span>
+      <button class="pricing__switch" id="pricing-switch" aria-label="Cambia periodo di fatturazione">
+        <span class="pricing__switch-thumb"></span>
+      </button>
+      <span class="pricing__toggle-label" data-period="annual">
+        Annuale <span class="badge badge-green">-20%</span>
+      </span>
+    </div>
+
+    <div class="pricing__grid">
+      {plans.map((plan) => (
+        <div class:list={["pricing__card card fade-up", plan.highlighted && "pricing__card--highlighted"]}>
+          {plan.badge && <span class="badge badge-accent pricing__badge">{plan.badge}</span>}
+          <h3 class="pricing__plan-name">{plan.name}</h3>
+          <p class="pricing__plan-desc">{plan.description}</p>
+
+          {plan.monthly ? (
+            <div class="pricing__price">
+              <span class="pricing__amount" data-monthly={plan.monthly} data-annual={plan.annual}>
+                <span class="pricing__currency">&euro;</span>{plan.monthly}
+              </span>
+              <span class="pricing__period">/tecnico/mese</span>
+            </div>
+          ) : (
+            <div class="pricing__price">
+              <span class="pricing__amount pricing__amount--custom">Custom</span>
+            </div>
+          )}
+
+          <a href="#" class:list={[plan.ctaClass, "pricing__cta"]}>{plan.cta}</a>
+
+          <ul class="pricing__features">
+            {plan.features.map((f) => (
+              <li class="pricing__feature">
+                <svg class="pricing__check" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <path d="M3 8.5L6.5 12L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                {f}
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  const toggle = document.getElementById('pricing-switch');
+  if (toggle) {
+    // Restore saved preference
+    let isAnnual = localStorage.getItem('deskcore-pricing-annual') === 'true';
+    if (isAnnual) {
+      toggle.classList.add('active');
+      updatePrices(true);
+    }
+
+    toggle.addEventListener('click', () => {
+      isAnnual = !isAnnual;
+      toggle.classList.toggle('active', isAnnual);
+      localStorage.setItem('deskcore-pricing-annual', String(isAnnual));
+      updatePrices(isAnnual);
+    });
+
+    function updatePrices(annual: boolean) {
+      document.querySelectorAll('.pricing__amount[data-monthly]').forEach((el) => {
+        const monthly = el.getAttribute('data-monthly');
+        const annualVal = el.getAttribute('data-annual');
+        const currency = el.querySelector('.pricing__currency');
+        if (currency) {
+          el.textContent = '';
+          el.appendChild(currency);
+          el.appendChild(document.createTextNode(annual ? annualVal! : monthly!));
+        }
+      });
+    }
+  }
+</script>
+
+<style>
+  .pricing__header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+  }
+
+  .pricing__title {
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    color: var(--ink);
+  }
+
+  .pricing__toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-bottom: 3rem;
+  }
+
+  .pricing__toggle-label {
+    font-size: 0.9375rem;
+    color: var(--gray-600);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .pricing__switch {
+    width: 48px;
+    height: 26px;
+    background: var(--gray-200);
+    border-radius: 100px;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    transition: background 0.25s;
+    padding: 0;
+  }
+
+  .pricing__switch.active {
+    background: var(--accent);
+  }
+
+  .pricing__switch-thumb {
+    width: 20px;
+    height: 20px;
+    background: white;
+    border-radius: 50%;
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    transition: transform 0.25s;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+  }
+
+  .pricing__switch.active .pricing__switch-thumb {
+    transform: translateX(22px);
+  }
+
+  .pricing__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    align-items: start;
+  }
+
+  .pricing__card {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    text-align: center;
+  }
+
+  .pricing__card--highlighted {
+    outline: 2px solid var(--accent);
+    outline-offset: -1px;
+    box-shadow: var(--shadow-accent);
+  }
+
+  .pricing__badge {
+    position: absolute;
+    top: -0.75rem;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .pricing__plan-name {
+    font-family: var(--font-body);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 0.375rem;
+  }
+
+  .pricing__plan-desc {
+    font-size: 0.875rem;
+    color: var(--gray-400);
+    margin-bottom: 1.5rem;
+  }
+
+  .pricing__price {
+    margin-bottom: 1.75rem;
+  }
+
+  .pricing__amount {
+    font-family: var(--font-display);
+    font-size: 3rem;
+    color: var(--ink);
+    line-height: 1;
+  }
+
+  .pricing__amount--custom {
+    font-size: 2.25rem;
+  }
+
+  .pricing__currency {
+    font-size: 1.5rem;
+    vertical-align: super;
+    margin-right: 0.125rem;
+  }
+
+  .pricing__period {
+    display: block;
+    font-size: 0.8125rem;
+    color: var(--gray-400);
+    margin-top: 0.375rem;
+  }
+
+  .pricing__cta {
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+
+  .pricing__features {
+    list-style: none;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+    padding: 0;
+  }
+
+  .pricing__feature {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    font-size: 0.875rem;
+    color: var(--gray-600);
+    line-height: 1.4;
+  }
+
+  .pricing__check {
+    flex-shrink: 0;
+    color: var(--green);
+  }
+
+  @media (max-width: 1024px) {
+    .pricing__grid {
+      grid-template-columns: 1fr;
+      max-width: 420px;
+      margin: 0 auto;
+    }
+
+    .pricing__card--highlighted {
+      order: -1;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .pricing__title {
+      font-size: 2rem;
+    }
+  }
+</style>

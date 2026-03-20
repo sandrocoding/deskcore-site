@@ -1,0 +1,245 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import FAQAccordion from '../components/FAQAccordion.astro';
+
+const faqGenerali = [
+  {
+    question: "Cos'è DeskCore?",
+    answer: "DeskCore è un gestionale IT completo progettato specificamente per MSP (Managed Service Provider). Integra in un'unica piattaforma ticketing, asset management, contratti, fatturazione, CRM, portale cliente, AI e oltre 70 moduli — tutto pensato per il mercato italiano.",
+  },
+  {
+    question: "A chi è rivolto?",
+    answer: "DeskCore è pensato per MSP, system integrator e IT service provider italiani di qualsiasi dimensione, dal freelance al team di 50+ tecnici.",
+  },
+  {
+    question: "Posso provarlo gratis?",
+    answer: "Sì! Offriamo una prova gratuita di 14 giorni senza carta di credito. Avrai accesso a tutte le funzionalità del piano Professional per valutare la piattaforma senza vincoli.",
+  },
+  {
+    question: "Quanti moduli include?",
+    answer: "DeskCore include oltre 70 moduli integrati nativamente: ticketing, asset management, rapportini, contratti, preventivi, CRM, pipeline, fatturazione, portale cliente, AI, automazioni, security, compliance e molto altro.",
+  },
+  {
+    question: "È in italiano?",
+    answer: "Sì, l'interfaccia e il supporto sono completamente in italiano. È disponibile anche la lingua inglese per team internazionali, selezionabile con un click.",
+  },
+];
+
+const faqTecnica = [
+  {
+    question: "Dove sono ospitati i dati?",
+    answer: "I dati sono ospitati su server in Unione Europea (Germania), conformi al GDPR. Utilizziamo infrastruttura enterprise con backup giornalieri, crittografia AES-256 e monitoraggio 24/7.",
+  },
+  {
+    question: "È multi-tenant?",
+    answer: "Sì, DeskCore è nativamente multi-tenant. Ogni azienda ha i propri dati completamente isolati, con la possibilità di gestire più sedi e team.",
+  },
+  {
+    question: "Si integra con Fatture in Cloud?",
+    answer: "Sì, l'integrazione con Fatture in Cloud è nativa e bidirezionale. Puoi sincronizzare clienti, creare bozze di fattura direttamente dai rapportini e importare clienti esistenti.",
+  },
+  {
+    question: "Supporta la fatturazione elettronica?",
+    answer: "Sì, DeskCore gestisce tutti i campi necessari per la fatturazione elettronica italiana: PEC, codice SDI/destinatario, regime fiscale e codice ATECO.",
+  },
+  {
+    question: "Ha un'API?",
+    answer: "Sì, DeskCore offre un'API REST pubblica con documentazione OpenAPI, 17 scope per modulo e rate limiting configurabile in base al piano.",
+  },
+];
+
+const faqMigrazione = [
+  {
+    question: "Come migro i dati dal mio sistema attuale?",
+    answer: "DeskCore supporta l'import CSV universale per tutte le entità: clienti, contatti, asset, contratti, ticket e molto altro. Il wizard guidato ti accompagna passo passo nella migrazione.",
+  },
+  {
+    question: "Quanto tempo serve per essere operativi?",
+    answer: "La maggior parte degli MSP è operativa in 48 ore. Il wizard di onboarding ti guida nella configurazione iniziale, e l'import CSV permette di migrare i dati rapidamente.",
+  },
+  {
+    question: "Offrite supporto alla migrazione?",
+    answer: "Il piano Enterprise include onboarding assistito con un consulente dedicato. Per gli altri piani, la documentazione e il supporto email ti guidano in ogni fase.",
+  },
+];
+
+const faqPrezzi = [
+  {
+    question: "Posso cambiare piano in qualsiasi momento?",
+    answer: "Sì, puoi fare upgrade o downgrade del piano in qualsiasi momento. Il cambio è immediato e il costo viene calcolato pro-rata.",
+  },
+  {
+    question: "C'è un contratto minimo?",
+    answer: "No, l'abbonamento è mensile e puoi cancellare quando vuoi. Con il piano annuale risparmi il 20%, ma non sei vincolato oltre il periodo pagato.",
+  },
+  {
+    question: "Cosa succede dopo i 14 giorni di prova?",
+    answer: "Al termine della prova puoi scegliere un piano a pagamento. Se non procedi, i tuoi dati vengono conservati per 30 giorni, dandoti tutto il tempo per decidere.",
+  },
+  {
+    question: "Accettate pagamenti con carta?",
+    answer: "Sì, accettiamo Visa, Mastercard e American Express tramite Stripe. Puoi anche richiedere fatturazione bancaria per il piano Enterprise.",
+  },
+];
+
+const faqSicurezza = [
+  {
+    question: "I dati sono cifrati?",
+    answer: "Sì. Tutti i dati sono cifrati in transito con HTTPS/TLS e at rest con AES-256-GCM. Le credenziali sensibili nel vault utilizzano crittografia dedicata.",
+  },
+  {
+    question: "Supportate il 2FA?",
+    answer: "Sì, DeskCore supporta l'autenticazione a due fattori TOTP, compatibile con Google Authenticator, Authy e qualsiasi app TOTP standard.",
+  },
+  {
+    question: "Siete conformi al GDPR?",
+    answer: "Sì. Dati ospitati in EU, DPA disponibile su richiesta, audit trail completo su ogni operazione, policy di data retention configurabili e strumenti GDPR integrati.",
+  },
+];
+const allFaqs = [...faqGenerali, ...faqTecnica, ...faqMigrazione, ...faqPrezzi, ...faqSicurezza];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": allFaqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+};
+---
+
+<PageLayout
+  title="FAQ — DeskCore"
+  description="Risposte alle domande più frequenti su DeskCore, il gestionale IT per MSP."
+  jsonLd={faqSchema}
+>
+  <!-- Hero -->
+  <section class="hero-faq">
+    <div class="container hero-faq__inner">
+      <h1 class="hero-faq__title">Domande Frequenti</h1>
+      <p class="hero-faq__subtitle">Tutto quello che vuoi sapere su DeskCore</p>
+    </div>
+  </section>
+
+  <!-- FAQ Sections -->
+  <section class="section">
+    <div class="container faq-container">
+
+      <div class="faq-group fade-up">
+        <h2 class="faq-group__title">Generali</h2>
+        <FAQAccordion items={faqGenerali} />
+      </div>
+
+      <div class="faq-group fade-up">
+        <h2 class="faq-group__title">Tecnica</h2>
+        <FAQAccordion items={faqTecnica} />
+      </div>
+
+      <div class="faq-group fade-up">
+        <h2 class="faq-group__title">Migrazione</h2>
+        <FAQAccordion items={faqMigrazione} />
+      </div>
+
+      <div class="faq-group fade-up">
+        <h2 class="faq-group__title">Prezzi e Pagamenti</h2>
+        <FAQAccordion items={faqPrezzi} />
+      </div>
+
+      <div class="faq-group fade-up">
+        <h2 class="faq-group__title">Sicurezza</h2>
+        <FAQAccordion items={faqSicurezza} />
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section faq-cta fade-up">
+    <div class="container faq-cta__inner">
+      <h2 class="faq-cta__title">Non trovi la risposta che cerchi?</h2>
+      <p class="faq-cta__text">Scrivici e ti risponderemo al più presto.</p>
+      <a href="/chi-siamo#contactForm" class="btn btn-primary">Contattaci</a>
+    </div>
+  </section>
+</PageLayout>
+
+<style>
+  .hero-faq {
+    background: linear-gradient(180deg, var(--warm) 0%, var(--paper) 100%);
+    padding: 8rem 0 5rem;
+    text-align: center;
+  }
+
+  .hero-faq__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-faq__title {
+    font-family: var(--font-display);
+    font-size: 3.5rem;
+    color: var(--ink);
+    margin-bottom: 1rem;
+  }
+
+  .hero-faq__subtitle {
+    font-size: 1.25rem;
+    color: var(--gray-600);
+  }
+
+  .faq-container {
+    max-width: 760px;
+    margin: 0 auto;
+  }
+
+  .faq-group {
+    margin-bottom: 3rem;
+  }
+
+  .faq-group:last-child {
+    margin-bottom: 0;
+  }
+
+  .faq-group__title {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    color: var(--ink);
+    margin-bottom: 1rem;
+  }
+
+  .faq-cta {
+    background: var(--gray-100);
+  }
+
+  .faq-cta__inner {
+    text-align: center;
+  }
+
+  .faq-cta__title {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    color: var(--ink);
+    margin-bottom: 0.75rem;
+  }
+
+  .faq-cta__text {
+    font-size: 1.0625rem;
+    color: var(--gray-600);
+    margin-bottom: 2rem;
+  }
+
+  @media (max-width: 768px) {
+    .hero-faq {
+      padding: 5rem 0 3rem;
+    }
+
+    .hero-faq__title {
+      font-size: 2.25rem;
+    }
+  }
+</style>

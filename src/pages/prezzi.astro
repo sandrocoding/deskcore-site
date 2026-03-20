@@ -1,0 +1,279 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import PricingSection from '../components/PricingSection.astro';
+import FAQAccordion from '../components/FAQAccordion.astro';
+
+const comparisonRows = [
+  { feature: "Ticketing + SLA",    starter: true,        pro: true,        enterprise: true },
+  { feature: "Asset Management",   starter: true,        pro: true,        enterprise: true },
+  { feature: "Rapportini PDF",     starter: "5 template", pro: "5 template + AI", enterprise: "Custom" },
+  { feature: "Contratti",          starter: true,        pro: true,        enterprise: true },
+  { feature: "CRM Pipeline",       starter: false,       pro: true,        enterprise: true },
+  { feature: "AI Copilot",         starter: false,       pro: true,        enterprise: true },
+  { feature: "Automazioni",        starter: "5 regole",  pro: "Illimitate", enterprise: "Illimitate" },
+  { feature: "Security Center",    starter: false,       pro: true,        enterprise: true },
+  { feature: "Portale Cliente",    starter: "Base",      pro: "Avanzato",  enterprise: "Custom" },
+  { feature: "White-label",        starter: false,       pro: false,       enterprise: true },
+  { feature: "SSO/SAML",           starter: false,       pro: false,       enterprise: true },
+  { feature: "API Pubblica",       starter: false,       pro: "1000 req/h", enterprise: "100k req/h" },
+  { feature: "Utenti",             starter: "3",         pro: "Illimitati", enterprise: "Illimitati" },
+  { feature: "Storage",            starter: "1 GB",      pro: "10 GB",     enterprise: "Illimitato" },
+  { feature: "Supporto",           starter: "Email",     pro: "Email + Chat", enterprise: "Dedicato" },
+];
+
+const pricingFaqs = [
+  {
+    question: "Posso cambiare piano in qualsiasi momento?",
+    answer: "Si, puoi fare upgrade o downgrade in qualsiasi momento. Il cambio e immediato e il costo viene ricalcolato pro-rata per il periodo rimanente."
+  },
+  {
+    question: "C'e un periodo di prova gratuito?",
+    answer: "Tutti i piani includono 14 giorni di prova gratuita con accesso a tutte le funzionalita Professional. Non serve carta di credito per iniziare."
+  },
+  {
+    question: "Come funziona il prezzo per tecnico?",
+    answer: "Il prezzo si applica per ogni utente con ruolo tecnico, admin o manager. Gli utenti del portale cliente e gli utenti readonly non vengono conteggiati."
+  },
+  {
+    question: "Cosa succede se supero i limiti del mio piano?",
+    answer: "Riceverai una notifica quando ti avvicini ai limiti. Non blocchiamo mai il servizio: ti contatteremo per trovare il piano piu adatto alle tue esigenze."
+  },
+  {
+    question: "Offrite sconti per pagamento annuale?",
+    answer: "Si, il pagamento annuale prevede uno sconto del 20% rispetto al prezzo mensile. Tutti i prezzi mostrati nella tabella sono disponibili sia in versione mensile che annuale."
+  }
+];
+---
+
+<PageLayout
+  title="Prezzi — DeskCore"
+  description="Piani trasparenti per MSP di ogni dimensione. Parti da €29/mese per tecnico."
+>
+  <!-- Hero -->
+  <section class="section pricing-hero">
+    <div class="container">
+      <div class="pricing-hero__content fade-up">
+        <h1 class="pricing-hero__title">Prezzi semplici, senza sorprese</h1>
+        <p class="pricing-hero__subtitle">
+          Scegli il piano adatto al tuo MSP. Tutti includono 14 giorni di prova gratuita.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Cards -->
+  <PricingSection />
+
+  <!-- Comparison Table -->
+  <section class="section comparison" id="confronta">
+    <div class="container fade-up">
+      <h2 class="comparison__title">Confronta i piani</h2>
+
+      <div class="comparison__wrapper">
+        <table class="comparison__table">
+          <thead>
+            <tr>
+              <th class="comparison__feature-col">Funzionalita</th>
+              <th>Starter</th>
+              <th class="comparison__pro-col">Professional</th>
+              <th>Enterprise</th>
+            </tr>
+          </thead>
+          <tbody>
+            {comparisonRows.map((row) => (
+              <tr>
+                <td class="comparison__feature-name">{row.feature}</td>
+                <td class="comparison__cell">
+                  {row.starter === true ? (
+                    <svg class="comparison__check" width="20" height="20" viewBox="0 0 16 16" fill="none">
+                      <path d="M3 8.5L6.5 12L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  ) : row.starter === false ? (
+                    <span class="comparison__dash">&mdash;</span>
+                  ) : (
+                    <span class="comparison__text">{row.starter}</span>
+                  )}
+                </td>
+                <td class="comparison__cell comparison__pro-cell">
+                  {row.pro === true ? (
+                    <svg class="comparison__check" width="20" height="20" viewBox="0 0 16 16" fill="none">
+                      <path d="M3 8.5L6.5 12L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  ) : row.pro === false ? (
+                    <span class="comparison__dash">&mdash;</span>
+                  ) : (
+                    <span class="comparison__text">{row.pro}</span>
+                  )}
+                </td>
+                <td class="comparison__cell">
+                  {row.enterprise === true ? (
+                    <svg class="comparison__check" width="20" height="20" viewBox="0 0 16 16" fill="none">
+                      <path d="M3 8.5L6.5 12L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  ) : row.enterprise === false ? (
+                    <span class="comparison__dash">&mdash;</span>
+                  ) : (
+                    <span class="comparison__text">{row.enterprise}</span>
+                  )}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section pricing-faq" id="faq">
+    <div class="container fade-up">
+      <h2 class="pricing-faq__title">Domande sui prezzi?</h2>
+      <div class="pricing-faq__content">
+        <FAQAccordion items={pricingFaqs} />
+      </div>
+    </div>
+  </section>
+</PageLayout>
+
+<style>
+  /* Hero */
+  .pricing-hero {
+    text-align: center;
+    padding-bottom: 1rem;
+  }
+
+  .pricing-hero__title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 5vw, 3rem);
+    color: var(--ink);
+    margin-bottom: 1rem;
+    line-height: 1.15;
+  }
+
+  .pricing-hero__subtitle {
+    font-size: 1.125rem;
+    color: var(--gray-600);
+    max-width: 540px;
+    margin: 0 auto;
+    line-height: 1.65;
+  }
+
+  /* Comparison Table */
+  .comparison__title {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    text-align: center;
+    color: var(--ink);
+    margin-bottom: 2rem;
+  }
+
+  .comparison__wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border-radius: 12px;
+    border: 1px solid var(--gray-200);
+  }
+
+  .comparison__table {
+    width: 100%;
+    min-width: 640px;
+    border-collapse: collapse;
+    font-size: 0.9375rem;
+  }
+
+  .comparison__table thead {
+    background: var(--gray-50);
+  }
+
+  .comparison__table th {
+    padding: 1rem 1.25rem;
+    font-weight: 600;
+    color: var(--ink);
+    text-align: center;
+    border-bottom: 2px solid var(--gray-200);
+    white-space: nowrap;
+  }
+
+  .comparison__table th:first-child {
+    text-align: left;
+    position: sticky;
+    left: 0;
+    background: var(--gray-50);
+    z-index: 2;
+  }
+
+  .comparison__pro-col {
+    background: var(--accent-light) !important;
+    color: var(--accent) !important;
+  }
+
+  .comparison__table td {
+    padding: 0.875rem 1.25rem;
+    text-align: center;
+    border-bottom: 1px solid var(--gray-100);
+    vertical-align: middle;
+  }
+
+  .comparison__feature-name {
+    text-align: left !important;
+    font-weight: 500;
+    color: var(--ink);
+    white-space: nowrap;
+    position: sticky;
+    left: 0;
+    background: white;
+    z-index: 1;
+  }
+
+  .comparison__pro-cell {
+    background: rgba(37, 99, 235, 0.02);
+  }
+
+  .comparison__check {
+    color: var(--green);
+    display: inline-block;
+  }
+
+  .comparison__dash {
+    color: var(--gray-300);
+    font-size: 1.25rem;
+  }
+
+  .comparison__text {
+    color: var(--gray-600);
+    font-size: 0.8125rem;
+    font-weight: 500;
+  }
+
+  .comparison__table tbody tr:last-child td {
+    border-bottom: none;
+  }
+
+  /* FAQ */
+  .pricing-faq {
+    padding-top: 3rem;
+  }
+
+  .pricing-faq__title {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    text-align: center;
+    color: var(--ink);
+    margin-bottom: 2rem;
+  }
+
+  .pricing-faq__content {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  @media (max-width: 640px) {
+    .comparison__title {
+      font-size: 1.5rem;
+    }
+
+    .pricing-faq__title {
+      font-size: 1.5rem;
+    }
+  }
+</style>

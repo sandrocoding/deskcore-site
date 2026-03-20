@@ -1,0 +1,385 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+---
+
+<PageLayout
+  title="Chi Siamo — DeskCore"
+  description="DeskCore nasce in Italia, dall'esperienza diretta di chi gestisce un MSP ogni giorno."
+>
+  <!-- Hero -->
+  <section class="hero-about">
+    <div class="container hero-about__inner">
+      <span class="badge badge-accent">La nostra storia</span>
+      <h1 class="hero-about__title">Costruito da MSP,<br />per gli MSP.</h1>
+    </div>
+  </section>
+
+  <!-- Story -->
+  <section class="section fade-up">
+    <div class="container story">
+      <div class="story__content">
+        <p class="story__lead">
+          DeskCore nasce in Italia, dall'esperienza diretta di chi gestisce un MSP ogni giorno.
+        </p>
+        <p class="story__text">
+          Dopo anni passati a destreggiarci tra decine di tool diversi — uno per il ticketing,
+          uno per i contratti, uno per la fatturazione, uno per il CRM — ci siamo chiesti:
+          perché non esiste un unico strumento che faccia tutto?
+        </p>
+        <p class="story__text">
+          Così è nato DeskCore: un gestionale IT completo, pensato e costruito
+          specificamente per le esigenze degli MSP italiani.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mission -->
+  <section class="section mission fade-up">
+    <div class="container">
+      <div class="mission__box">
+        <h2 class="mission__title">La nostra missione</h2>
+        <p class="mission__text">
+          Semplificare la vita degli MSP italiani con uno strumento unico, completo e intelligente.
+          Perché gestire un'azienda IT non dovrebbe richiedere 10 software diversi.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Values -->
+  <section class="section fade-up">
+    <div class="container">
+      <h2 class="values__heading">I nostri valori</h2>
+      <div class="values-grid">
+        <div class="card values-card">
+          <div class="values-card__icon">&#9898;</div>
+          <h3 class="values-card__title">Semplicita</h3>
+          <p class="values-card__text">
+            Interfaccia intuitiva che non richiede un manuale.
+            Se è complicato, non l'abbiamo fatto bene.
+          </p>
+        </div>
+        <div class="card values-card">
+          <div class="values-card__icon">&#9881;</div>
+          <h3 class="values-card__title">Completezza</h3>
+          <p class="values-card__text">
+            70+ moduli integrati nativamente. Nessuna integrazione di terze parti
+            necessaria per il 90% delle operazioni.
+          </p>
+        </div>
+        <div class="card values-card">
+          <div class="values-card__icon">&#127470;&#127481;</div>
+          <h3 class="values-card__title">Made in Italy</h3>
+          <p class="values-card__text">
+            Progettato per il mercato italiano: fatturazione elettronica, GDPR, NIS2,
+            supporto in italiano.
+          </p>
+        </div>
+        <div class="card values-card">
+          <div class="values-card__icon">&#128172;</div>
+          <h3 class="values-card__title">Supporto Umano</h3>
+          <p class="values-card__text">
+            Dietro ogni ticket di supporto c'è una persona vera che capisce il tuo lavoro.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="section contact fade-up">
+    <div class="container">
+      <h2 class="contact__heading">Contattaci</h2>
+      <div class="contact-grid">
+        <form class="contact-form" id="contactForm">
+          <div class="form-group">
+            <label for="name">Nome</label>
+            <input type="text" id="name" name="name" required placeholder="Il tuo nome" />
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required placeholder="la-tua@email.it" />
+          </div>
+          <div class="form-group">
+            <label for="message">Messaggio</label>
+            <textarea id="message" name="message" rows="5" required placeholder="Come possiamo aiutarti?"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Invia messaggio</button>
+          <div class="form-success" id="formSuccess">
+            Grazie! Il tuo messaggio è stato inviato. Ti risponderemo al più presto.
+          </div>
+        </form>
+        <div class="contact-info">
+          <div class="contact-info__item">
+            <h4>Email</h4>
+            <p><a href="mailto:info@deskcore.it">info@deskcore.it</a></p>
+          </div>
+          <div class="contact-info__item">
+            <h4>Indirizzo</h4>
+            <p>Italia (sede da definire)</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</PageLayout>
+
+<style>
+  /* Hero */
+  .hero-about {
+    background: linear-gradient(180deg, var(--warm) 0%, var(--paper) 100%);
+    padding: 8rem 0 5rem;
+    text-align: center;
+  }
+
+  .hero-about__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-about__title {
+    font-family: var(--font-display);
+    font-size: 3.5rem;
+    color: var(--ink);
+    margin-top: 1.25rem;
+  }
+
+  /* Story */
+  .story {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .story__lead {
+    font-size: 1.375rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+  }
+
+  .story__text {
+    font-size: 1.0625rem;
+    color: var(--gray-600);
+    line-height: 1.75;
+    margin-bottom: 1.25rem;
+  }
+
+  /* Mission */
+  .mission__box {
+    max-width: 720px;
+    margin: 0 auto;
+    text-align: center;
+    background: var(--accent-light);
+    border-radius: 16px;
+    padding: 3rem 2.5rem;
+  }
+
+  .mission__title {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    color: var(--ink);
+    margin-bottom: 1rem;
+  }
+
+  .mission__text {
+    font-size: 1.125rem;
+    color: var(--gray-600);
+    line-height: 1.7;
+  }
+
+  /* Values */
+  .values__heading {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 2.5rem;
+    color: var(--ink);
+  }
+
+  .values-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .values-card {
+    text-align: center;
+  }
+
+  .values-card__icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .values-card__title {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    color: var(--ink);
+    margin-bottom: 0.75rem;
+  }
+
+  .values-card__text {
+    font-size: 0.9375rem;
+    color: var(--gray-600);
+    line-height: 1.65;
+  }
+
+  /* Contact */
+  .contact {
+    background: var(--gray-100);
+  }
+
+  .contact__heading {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 2.5rem;
+    color: var(--ink);
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 3rem;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .form-group {
+    margin-bottom: 1.25rem;
+  }
+
+  .form-group label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 0.375rem;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--gray-200);
+    border-radius: 8px;
+    font-family: var(--font-body);
+    font-size: 0.9375rem;
+    color: var(--ink);
+    background: var(--paper);
+    transition: border-color 0.2s;
+  }
+
+  .form-group input:focus,
+  .form-group textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-light);
+  }
+
+  .form-group textarea {
+    resize: vertical;
+  }
+
+  .form-success {
+    display: none;
+    margin-top: 1rem;
+    padding: 1rem;
+    background: var(--green-light);
+    color: var(--green);
+    border-radius: 8px;
+    font-size: 0.9375rem;
+    font-weight: 500;
+  }
+
+  .form-success.show {
+    display: block;
+  }
+
+  .contact-info {
+    padding-top: 0.5rem;
+  }
+
+  .contact-info__item {
+    margin-bottom: 1.5rem;
+  }
+
+  .contact-info__item h4 {
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 0.25rem;
+  }
+
+  .contact-info__item p {
+    font-size: 0.9375rem;
+    color: var(--gray-600);
+    line-height: 1.5;
+  }
+
+  @media (max-width: 768px) {
+    .hero-about {
+      padding: 5rem 0 3rem;
+    }
+
+    .hero-about__title {
+      font-size: 2.25rem;
+    }
+
+    .values-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .contact-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+    const form = document.getElementById('contactForm') as HTMLFormElement;
+    const success = document.getElementById('formSuccess');
+
+    if (!form) return;
+
+    // Clear error on input
+    form.querySelectorAll('input, textarea').forEach((input) => {
+      input.addEventListener('input', () => {
+        (input as HTMLElement).style.borderColor = '';
+        input.removeAttribute('aria-invalid');
+      });
+    });
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const inputs = form.querySelectorAll('[required]') as NodeListOf<HTMLInputElement>;
+      let valid = true;
+      let firstInvalid: HTMLInputElement | null = null;
+
+      inputs.forEach((input) => {
+        if (!input.value.trim() || (input.type === 'email' && !input.value.includes('@'))) {
+          valid = false;
+          input.style.borderColor = '#ef4444';
+          input.setAttribute('aria-invalid', 'true');
+          if (!firstInvalid) firstInvalid = input;
+        }
+      });
+
+      if (!valid) {
+        firstInvalid?.focus();
+        return;
+      }
+
+      form.reset();
+      success?.classList.add('show');
+      setTimeout(() => success?.classList.remove('show'), 5000);
+    });
+  });
+</script>

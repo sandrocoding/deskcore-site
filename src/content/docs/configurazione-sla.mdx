@@ -1,0 +1,187 @@
+---
+title: "Configurazione SLA"
+description: "Come configurare le policy SLA, gli orari lavorativi, le escalation e gli alert in DeskCore."
+order: 3
+---
+
+# Configurazione SLA
+
+Per un Managed Service Provider, garantire livelli di servizio definiti e misurabili e fondamentale. Gli SLA (Service Level Agreement) non sono solo clausole contrattuali: sono la promessa che fai ai tuoi clienti e lo strumento con cui misuri la qualita del tuo servizio. DeskCore offre un sistema SLA completo con policy per priorita, orari lavorativi, escalation automatiche, alert in tempo reale e reportistica dettagliata.
+
+---
+
+## Policy SLA per priorita
+
+Le policy SLA definiscono i tempi massimi di risposta e risoluzione per ogni livello di priorita dei ticket. Per configurarle:
+
+1. Naviga su **Impostazioni > SLA** dalla sidebar.
+
+2. Troverai una tabella con i **quattro livelli di priorita** predefiniti:
+
+   | Priorita | Tempo di risposta | Tempo di risoluzione |
+   |----------|-------------------|----------------------|
+   | **Critica** | 15 minuti | 2 ore |
+   | **Alta** | 1 ora | 4 ore |
+   | **Media** | 4 ore | 8 ore |
+   | **Bassa** | 8 ore | 24 ore |
+
+   Questi sono valori di esempio — puoi personalizzarli in base ai tuoi contratti.
+
+3. Per ogni priorita, configura:
+   - **Tempo di prima risposta**: entro quanto il tecnico deve prendere in carico il ticket
+   - **Tempo di risoluzione**: entro quanto il ticket deve essere chiuso o risolto
+   - I tempi vengono calcolati solo durante gli **orari lavorativi** configurati (vedi sezione successiva)
+
+4. Puoi anche definire **policy specifiche per azienda**: se un cliente ha un contratto premium con SLA piu stringenti, puoi associare una policy dedicata che sovrascrive i valori di default.
+
+> **Come funziona**: quando viene creato un nuovo ticket, DeskCore applica automaticamente la policy SLA in base alla priorita selezionata e all'eventuale policy specifica del cliente. Un timer visivo nella scheda del ticket mostra il tempo rimanente con una colorazione intuitiva: verde (nei tempi), giallo (warning), rosso (in pericolo), viola (SLA violato).
+
+---
+
+## Orari lavorativi e festivita
+
+Gli SLA vengono calcolati esclusivamente durante gli orari lavorativi. Configurarli correttamente e essenziale per evitare penalita ingiuste.
+
+### Orari lavorativi
+
+Nella sezione **Impostazioni > Calendario**, definisci gli orari standard della tua azienda:
+
+- **Giorni lavorativi**: tipicamente lunedi-venerdi, ma puoi personalizzare (ad esempio includere il sabato mattina)
+- **Orario inizio** e **orario fine**: ad esempio 9:00-13:00 e 14:00-18:00
+- **Pausa pranzo**: il tempo di pausa viene escluso dal calcolo SLA
+
+### Festivita
+
+Aggiungi le **festivita italiane** che la tua azienda osserva:
+
+- Capodanno (1 gennaio)
+- Epifania (6 gennaio)
+- Pasqua e Lunedi dell'Angelo (date variabili)
+- Festa della Liberazione (25 aprile)
+- Festa dei Lavoratori (1 maggio)
+- Festa della Repubblica (2 giugno)
+- Ferragosto (15 agosto)
+- Tutti i Santi (1 novembre)
+- Immacolata Concezione (8 dicembre)
+- Natale e Santo Stefano (25-26 dicembre)
+- **Festa del santo patrono** della tua citta
+
+Puoi aggiungere anche **chiusure aziendali straordinarie** (es. settimana di Natale, ponti). Durante le festivita, il timer SLA viene automaticamente sospeso e riprende alla riapertura degli uffici.
+
+---
+
+## Escalation automatica
+
+Quando un ticket rischia di violare lo SLA, DeskCore puo attivare automaticamente delle escalation per assicurare che il problema venga gestito in tempo.
+
+### Configurare le regole di escalation
+
+Vai su **Impostazioni > SLA > Escalation** e definisci:
+
+1. **Soglie di escalation**: ad esempio, quando il 75% del tempo SLA e trascorso senza risposta
+2. **Destinatari**: chi deve essere notificato
+   - Il tecnico assegnato
+   - Il team leader o manager
+   - L'amministratore
+3. **Canali di notifica**: come vengono avvisati i destinatari
+   - **In-app**: notifica nella campanella dell'interfaccia
+   - **Email**: messaggio email con dettagli del ticket e tempo rimanente
+   - **Telegram**: messaggio immediato tramite il bot Telegram aziendale
+
+### Livelli di escalation
+
+Puoi configurare escalation a piu livelli:
+
+- **Livello 1** (es. al 50% del tempo): notifica al tecnico assegnato
+- **Livello 2** (es. al 75% del tempo): notifica al manager del team
+- **Livello 3** (es. al 90% del tempo): notifica all'amministratore
+- **Violazione SLA**: notifica a tutti i destinatari configurati + registrazione dell'evento per il reporting
+
+Ogni escalation viene registrata nella cronologia del ticket, creando un audit trail completo e trasparente.
+
+---
+
+## Auto-escalation per inattivita
+
+Oltre alle escalation basate sul tempo SLA, DeskCore offre un sistema di **auto-escalation per inattivita** che interviene quando un ticket rimane fermo troppo a lungo senza aggiornamenti.
+
+### Come funziona
+
+Un cron job dedicato controlla ogni **15 minuti** tutti i ticket aperti e verifica:
+
+- Da quanto tempo il ticket non ha ricevuto commenti o aggiornamenti
+- Se la soglia di inattivita configurata e stata superata
+
+### Configurazione
+
+Nelle **Impostazioni del tenant**, puoi definire:
+
+- **Soglia di inattivita**: il numero di ore senza attivita dopo il quale scatta l'escalation (es. 24 ore)
+- **Azione automatica**: cosa succede quando la soglia viene superata
+  - Incremento automatico della priorita (es. da Media ad Alta)
+  - Notifica al tecnico e al manager
+  - Aggiunta di un commento automatico nel ticket
+
+Questo meccanismo e particolarmente utile per evitare che ticket vengano dimenticati o trascurati, garantendo che ogni richiesta del cliente riceva attenzione tempestiva.
+
+---
+
+## Alert e notifiche
+
+DeskCore offre un sistema di notifiche multicanale completo per tenerti sempre aggiornato sullo stato degli SLA.
+
+### Alert SLA breach
+
+Quando un SLA viene violato, DeskCore genera automaticamente:
+
+- **Notifica in-app** con badge rosso e animazione pulse sulla campanella
+- **Email** al tecnico assegnato e al manager con i dettagli della violazione
+- **Messaggio Telegram** (se configurato) per un alert immediato sul telefono
+
+### Configurare il bot Telegram
+
+Per ricevere alert SLA via Telegram:
+
+1. Vai su **Impostazioni > Integrazioni > Telegram**
+2. Segui il wizard di configurazione per collegare il bot
+3. Seleziona quali tipi di notifica ricevere:
+   - Alert SLA (breach, warning)
+   - Nuovi ticket assegnati
+   - Aggiornamenti ticket
+   - Digest giornaliero/settimanale/mensile
+
+### Quiet Hours
+
+Per evitare di essere disturbato fuori orario, configura le **quiet hours**:
+
+- Definisci una fascia oraria di silenzio (es. 20:00-8:00)
+- Le notifiche vengono accumulategrouped e inviate alla riapertura
+- Funziona su tutti i canali: push browser, email e Telegram
+- Le notifiche critiche (SLA breach su ticket con priorita Critica) possono essere escluse dalle quiet hours
+
+### Preferenze per canale
+
+Ogni utente puo personalizzare le proprie preferenze di notifica attraverso una **matrice canale/tipo**: per ciascuno dei 14 tipi di notifica, puoi scegliere su quali dei 4 canali (in-app, push browser, email, Telegram) vuoi riceverla.
+
+---
+
+## Best practice per la gestione SLA negli MSP
+
+1. **Sii realistico**: definisci SLA che il tuo team puo effettivamente rispettare. E meglio superare le aspettative che deluderle.
+
+2. **Differenzia per contratto**: offri diversi livelli SLA (Bronze, Silver, Gold) per giustificare pricing diversi e valorizzare i servizi premium.
+
+3. **Monitora costantemente**: usa la **dashboard SLA** per tenere sotto controllo le performance del team. DeskCore mostra la percentuale di SLA rispettati, i tempi medi di risposta e risoluzione, e i trend nel tempo.
+
+4. **Analizza le violazioni**: quando un SLA viene violato, non limitarti a risolvere il singolo ticket. Analizza la causa radice: mancanza di personale? Competenze insufficienti? Processo inadeguato?
+
+5. **Comunica con il cliente**: grazie al **report mensile SLA** generato automaticamente in PDF, puoi condividere con i clienti metriche trasparenti sul servizio erogato (uptime, SLA %, ore consumate, trend a 6 mesi).
+
+6. **Configura il portale cliente**: i clienti possono monitorare autonomamente lo stato dei loro ticket e gli indicatori SLA dalla **dashboard health** del portale, riducendo le richieste di aggiornamento e aumentando la trasparenza.
+
+---
+
+## Prossimi passi
+
+- **[Getting Started](/docs/getting-started)**: torna alla guida iniziale per la configurazione base
+- **[Il tuo primo cliente](/docs/primo-cliente)**: scopri come creare un'azienda cliente e aprire il primo ticket

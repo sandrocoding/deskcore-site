@@ -1,0 +1,199 @@
+---
+const categories = [
+  {
+    emoji: "⚙️",
+    name: "Gestione Operativa",
+    modules: [
+      { name: "Ticketing SLA", desc: "Ticket con SLA automatici, escalation e Kanban" },
+      { name: "Rapportini", desc: "Firma digitale, PDF, workflow approvazione" },
+      { name: "Asset Management", desc: "Inventario, wiki, cronologia interventi" },
+      { name: "Calendario", desc: "4 viste, drag&drop, input vocale" },
+      { name: "Progetti", desc: "Kanban, Gantt, milestone, sub-task" }
+    ]
+  },
+  {
+    emoji: "💼",
+    name: "Commerciale & CRM",
+    modules: [
+      { name: "Pipeline", desc: "Lead, opportunita, Kanban conversione" },
+      { name: "Preventivi", desc: "Wizard, firma cliente, suggerimenti AI" },
+      { name: "Contratti MSP", desc: "7 template, monte ore, PDF pro" },
+      { name: "Campagne", desc: "5 fasi, KPI, budget e target" },
+      { name: "Cross-selling", desc: "Matrice clienti per servizi attivi" }
+    ]
+  },
+  {
+    emoji: "💰",
+    name: "Fatturazione & Finance",
+    modules: [
+      { name: "Fatture in Cloud", desc: "Sync bidirezionale, bozze, import" },
+      { name: "Canoni e Noleggi", desc: "MRR/ARR, fatturazione automatica" },
+      { name: "Costi Orari", desc: "Margine per tecnico, cliente, intervento" },
+      { name: "Revenue Intelligence", desc: "Churn prediction, LTV, forecast" }
+    ]
+  },
+  {
+    emoji: "🔒",
+    name: "Security & Compliance",
+    modules: [
+      { name: "Security Center", desc: "Checklist, score, incidenti" },
+      { name: "Threat Indicators", desc: "Feed IoC, match automatico asset" },
+      { name: "Compliance GDPR/NIS2", desc: "Framework, audit trail, report" },
+      { name: "Monitoring", desc: "HTTP/ping check, alert, uptime" }
+    ]
+  },
+  {
+    emoji: "🌐",
+    name: "Portale Cliente",
+    modules: [
+      { name: "Portal v2", desc: "Ticket wizard, storico, pagamenti" },
+      { name: "Health Score", desc: "Score 0-100 automatico, trend" },
+      { name: "SLA Analytics", desc: "Report mensile PDF, benchmark" },
+      { name: "Knowledge Base", desc: "Articoli, categorie, self-service" }
+    ]
+  },
+  {
+    emoji: "🤖",
+    name: "AI & Automazione",
+    modules: [
+      { name: "AI Copilot", desc: "Suggerimenti proattivi, sentiment, digest" },
+      { name: "Automazioni", desc: "38+ trigger, 13 azioni, dry-run" },
+      { name: "Manutenzione Predittiva", desc: "Pattern detection, scoring rischio" },
+      { name: "Smart Scheduling", desc: "Assegnazione multi-fattore, GPS" }
+    ]
+  },
+  {
+    emoji: "🏗️",
+    name: "Piattaforma",
+    modules: [
+      { name: "White-label", desc: "Branding completo, dominio custom" },
+      { name: "API Pubblica", desc: "17 scope, rate limiting, API key" },
+      { name: "Marketplace", desc: "16 connettori, 6 categorie" },
+      { name: "SSO/SAML", desc: "SAML 2.0, auto-provisioning" }
+    ]
+  }
+];
+---
+
+<section class="section solution" id="moduli">
+  <div class="container">
+    <div class="solution__header">
+      <h2 class="solution__title">Un'unica piattaforma. 70+ moduli.</h2>
+      <p class="solution__subtitle">
+        Tutto quello che serve per gestire un MSP, integrato nativamente.
+      </p>
+    </div>
+
+    {categories.map((cat, i) => (
+      <div class:list={["solution__category fade-up", `stagger-${Math.min(i + 1, 6)}`]}>
+        <h3 class="solution__cat-name">
+          <span class="solution__cat-emoji">{cat.emoji}</span>
+          {cat.name}
+        </h3>
+        <div class="solution__modules">
+          {cat.modules.map((mod) => (
+            <div class="solution__module">
+              <span class="solution__mod-name">{mod.name}</span>
+              <span class="solution__mod-desc">{mod.desc}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
+
+<style>
+  .solution__header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .solution__title {
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    color: var(--ink);
+    margin-bottom: 1rem;
+  }
+
+  .solution__subtitle {
+    font-size: 1.125rem;
+    color: var(--gray-600);
+    max-width: 540px;
+    margin: 0 auto;
+  }
+
+  .solution__category {
+    margin-bottom: 3rem;
+  }
+
+  .solution__cat-name {
+    font-family: var(--font-body);
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--gray-200);
+  }
+
+  .solution__cat-emoji {
+    font-size: 1.25rem;
+  }
+
+  .solution__modules {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+  }
+
+  .solution__module {
+    background: var(--gray-100);
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-md);
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    transition: border-color 0.2s var(--ease-out), transform 0.2s var(--ease-out), box-shadow 0.2s var(--ease-out);
+    border-top: 2px solid transparent;
+  }
+
+  .solution__module:hover {
+    border-color: var(--accent);
+    border-top-color: var(--accent);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .solution__mod-name {
+    font-weight: 700;
+    font-size: 0.9375rem;
+    color: var(--ink);
+  }
+
+  .solution__mod-desc {
+    font-size: 0.8125rem;
+    color: var(--gray-600);
+    line-height: 1.5;
+  }
+
+  @media (max-width: 1024px) {
+    .solution__modules {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .solution__modules {
+      grid-template-columns: 1fr;
+    }
+
+    .solution__title {
+      font-size: 2rem;
+    }
+  }
+</style>
