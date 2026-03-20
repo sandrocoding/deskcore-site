@@ -5,27 +5,27 @@
   <div class="hero__glow" aria-hidden="true"></div>
   <div class="hero__glow hero__glow--2" aria-hidden="true"></div>
   <div class="container hero__inner">
-    <span class="badge badge-accent">70+ moduli integrati</span>
-    <h1 class="hero__title">
+    <span class="badge badge-accent hero__badge">70+ moduli integrati</span>
+    <h1 class="hero__title hero__animate-1">
       Smetti di gestire il tuo MSP<br /><span class="gradient-text">con 10 tool diversi.</span>
     </h1>
-    <p class="hero__subtitle">
+    <p class="hero__subtitle hero__animate-2">
       DeskCore unifica ticketing, asset, contratti, CRM, portale cliente
       e AI in un'unica piattaforma pensata per gli MSP italiani.
     </p>
-    <div class="hero__ctas">
-      <a href="#pricing" class="btn btn-primary btn-glow">
+    <div class="hero__ctas hero__animate-3">
+      <a href="#pricing" class="btn btn-primary btn-glow pulse-glow">
         Prova gratis 14 giorni
         <span class="btn-arrow" aria-hidden="true">&rarr;</span>
       </a>
       <a href="/demo" class="btn btn-outline">Guarda la demo</a>
     </div>
-    <p class="hero__trust">
+    <p class="hero__trust hero__animate-4">
       Nessuna carta di credito richiesta &middot; Setup in 5 minuti &middot; Supporto italiano
     </p>
 
     <!-- Stats bar -->
-    <div class="hero__stats">
+    <div class="hero__stats scale-in">
       <div class="hero__stat">
         <span class="hero__stat-number" data-count="70">0</span><span class="hero__stat-plus">+</span>
         <span class="hero__stat-label">Moduli integrati</span>
@@ -61,6 +61,32 @@
     text-align: center;
     position: relative;
     overflow: hidden;
+  }
+
+  /* Staggered entrance animations */
+  @keyframes heroFadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero__badge {
+    animation: heroFadeUp 0.8s var(--ease-out) 0.1s both;
+  }
+
+  .hero__animate-1 {
+    animation: heroFadeUp 0.8s var(--ease-out) 0.25s both;
+  }
+
+  .hero__animate-2 {
+    animation: heroFadeUp 0.8s var(--ease-out) 0.4s both;
+  }
+
+  .hero__animate-3 {
+    animation: heroFadeUp 0.8s var(--ease-out) 0.55s both;
+  }
+
+  .hero__animate-4 {
+    animation: heroFadeUp 0.8s var(--ease-out) 0.7s both;
   }
 
   .hero__glow {

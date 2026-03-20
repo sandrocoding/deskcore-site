@@ -30,20 +30,21 @@ const benefits = [
 
 <section class="section benefits" id="vantaggi">
   <div class="container">
-    <div class="benefits__header">
+    <div class="benefits__header fade-up">
+      <span class="badge badge-accent">I vantaggi</span>
       <h2 class="benefits__title">Perche 200+ MSP scelgono DeskCore</h2>
     </div>
 
     <div class="benefits__list">
       {benefits.map((b, i) => (
-        <div class:list={["benefits__item fade-up", i % 2 !== 0 && "benefits__item--reverse"]}>
+        <div class:list={[i % 2 === 0 ? "fade-in-left" : "fade-in-right", "benefits__item", i % 2 !== 0 && "benefits__item--reverse"]}>
           <div class="benefits__text">
             <span class="benefits__stat">{b.stat}</span>
             <h3 class="benefits__item-title">{b.title}</h3>
             <p class="benefits__item-desc">{b.description}</p>
           </div>
           <div class="benefits__visual">
-            <span class="benefits__stat-large">{b.stat}</span>
+            <span class="benefits__stat-large animate-float-slow">{b.stat}</span>
           </div>
         </div>
       ))}
@@ -61,6 +62,7 @@ const benefits = [
     font-family: var(--font-display);
     font-size: 2.5rem;
     color: var(--ink);
+    margin-top: 1rem;
   }
 
   .benefits__list {
