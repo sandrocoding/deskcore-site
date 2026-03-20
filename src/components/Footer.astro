@@ -24,7 +24,7 @@ const legale = [
       <!-- Brand column -->
       <div class="footer-brand">
         <a href="/" class="footer-logo">
-          <img src="/logo.png" alt="DeskCore" class="footer-logo__img" width="140" height="40" />
+          <span class="footer-logo__text">DeskCore</span>
         </a>
         <p class="footer-tagline">Il gestionale IT per MSP italiani.</p>
       </div>
@@ -101,10 +101,15 @@ const legale = [
     opacity: 0.8;
   }
 
-  .footer-logo__img {
-    height: 64px;
-    width: auto;
-    display: block;
+  .footer-logo__text {
+    font-family: var(--font-body);
+    font-size: 1.5rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--gradient-start), var(--gradient-mid), var(--gradient-end));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: -0.02em;
   }
 
   .footer-tagline {

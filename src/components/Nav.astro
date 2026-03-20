@@ -12,7 +12,7 @@ const links = [
   <div class="nav-inner container">
     <!-- Logo -->
     <a href="/" class="nav-logo">
-      <img src="/logo.png" alt="DeskCore" class="nav-logo__img" width="140" height="40" />
+      <span class="nav-logo__text">DeskCore</span>
     </a>
 
     <!-- Desktop links -->
@@ -99,10 +99,15 @@ const links = [
     opacity: 0.8;
   }
 
-  .nav-logo__img {
-    height: 70px;
-    width: auto;
-    display: block;
+  .nav-logo__text {
+    font-family: var(--font-body);
+    font-size: 1.75rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--gradient-start), var(--gradient-mid), var(--gradient-end));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: -0.02em;
   }
 
   /* Desktop links */
