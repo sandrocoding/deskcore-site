@@ -3,39 +3,52 @@ const painPoints = [
   {
     icon: "🔀",
     title: "Usi 10 tool diversi che non parlano tra loro",
-    description: "CRM da una parte, ticketing dall'altra, contratti su Excel. Ogni giorno perdi tempo a copiare dati tra sistemi che non si integrano."
+    description: "CRM da una parte, ticketing dall'altra, contratti su Excel. Ogni giorno perdi tempo a copiare dati tra sistemi che non si integrano.",
+    color: "rgba(239, 68, 68, 0.12)",
+    borderColor: "rgba(239, 68, 68, 0.25)"
   },
   {
     icon: "⏱️",
     title: "Le ore non tracciate spariscono",
-    description: "Senza tracciamento automatico, perdi il 20-30% del lavoro registrabile. Ore di assistenza che nessuno traccia, margini che evaporano."
+    description: "Senza tracciamento automatico, perdi il 20-30% del lavoro registrabile. Ore di assistenza che nessuno traccia, margini che evaporano.",
+    color: "rgba(245, 158, 11, 0.12)",
+    borderColor: "rgba(245, 158, 11, 0.25)"
   },
   {
     icon: "📞",
     title: "I clienti ti chiamano per sapere 'a che punto siamo'",
-    description: "Senza portale self-service, il telefono squilla in continuazione. Ogni chiamata ti toglie dal lavoro che conta."
+    description: "Senza portale self-service, il telefono squilla in continuazione. Ogni chiamata ti toglie dal lavoro che conta.",
+    color: "rgba(59, 130, 246, 0.12)",
+    borderColor: "rgba(59, 130, 246, 0.25)"
   },
   {
     icon: "📊",
     title: "Non sai se stai guadagnando o perdendo su un contratto",
-    description: "Margini, costi orari, trasferte: un buco nero. Scopri che un cliente è in perdita solo a fine anno, quando è troppo tardi."
+    description: "Margini, costi orari, trasferte: un buco nero. Scopri che un cliente è in perdita solo a fine anno, quando è troppo tardi.",
+    color: "rgba(124, 58, 237, 0.12)",
+    borderColor: "rgba(124, 58, 237, 0.25)"
   },
   {
     icon: "⏰",
     title: "SLA? Li controlli a mano (forse)",
-    description: "Senza automazione, le scadenze SLA saltano senza che nessuno se ne accorga. E i clienti se ne accorgono prima di te."
+    description: "Senza automazione, le scadenze SLA saltano senza che nessuno se ne accorga. E i clienti se ne accorgono prima di te.",
+    color: "rgba(236, 72, 153, 0.12)",
+    borderColor: "rgba(236, 72, 153, 0.25)"
   },
   {
     icon: "🚪",
     title: "Quando un tecnico va via, il know-how va con lui",
-    description: "Nessuna knowledge base, nessun processo documentato. Ogni partenza è una crisi, ogni onboarding ricomincia da zero."
+    description: "Nessuna knowledge base, nessun processo documentato. Ogni partenza è una crisi, ogni onboarding ricomincia da zero.",
+    color: "rgba(34, 197, 94, 0.12)",
+    borderColor: "rgba(34, 197, 94, 0.25)"
   }
 ];
 ---
 
 <section class="section" id="problemi">
   <div class="container">
-    <div class="problem__header">
+    <div class="problem__header fade-up">
+      <span class="badge badge-accent">Il problema</span>
       <h2 class="problem__title">Ti riconosci?</h2>
       <p class="problem__subtitle">
         Se gestisci un MSP, almeno tre di questi problemi li vivi ogni settimana.
@@ -43,8 +56,12 @@ const painPoints = [
     </div>
     <div class="problem__grid">
       {painPoints.map((point, i) => (
-        <div class:list={["problem__card card fade-up", `stagger-${i + 1}`]}>
-          <span class="problem__icon">{point.icon}</span>
+        <div class:list={["problem__card fade-up", `stagger-${i + 1}`]}
+             style={`--card-bg: ${point.color}; --card-border: ${point.borderColor};`}>
+          <span class="problem__number">{String(i + 1).padStart(2, '0')}</span>
+          <div class="problem__icon-wrap">
+            <span class="problem__icon">{point.icon}</span>
+          </div>
           <h3 class="problem__card-title">{point.title}</h3>
           <p class="problem__card-desc">{point.description}</p>
         </div>
@@ -63,6 +80,7 @@ const painPoints = [
     font-family: var(--font-display);
     font-size: 2.5rem;
     color: var(--ink);
+    margin-top: 1rem;
     margin-bottom: 1rem;
   }
 
@@ -80,14 +98,69 @@ const painPoints = [
   }
 
   .problem__card {
-    background: var(--warm);
+    background: var(--gray-100);
     border: 1px solid var(--gray-200);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.35s var(--ease-out);
+  }
+
+  .problem__card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--card-border), transparent);
+    opacity: 0;
+    transition: opacity 0.35s ease;
+  }
+
+  .problem__card:hover {
+    transform: translateY(-4px);
+    border-color: var(--card-border);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  }
+
+  .problem__card:hover::before {
+    opacity: 1;
+  }
+
+  .problem__number {
+    position: absolute;
+    top: 1.25rem;
+    right: 1.25rem;
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--gray-400);
+    opacity: 0.4;
+  }
+
+  .problem__icon-wrap {
+    width: 52px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius-md);
+    margin-bottom: 1.25rem;
+    transition: transform 0.3s var(--ease-out);
+  }
+
+  .problem__card:hover .problem__icon-wrap {
+    transform: scale(1.08);
   }
 
   .problem__icon {
-    font-size: 2rem;
+    font-size: 1.5rem;
     display: block;
-    margin-bottom: 1rem;
+    line-height: 1;
   }
 
   .problem__card-title {

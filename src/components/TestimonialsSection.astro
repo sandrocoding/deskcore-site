@@ -2,31 +2,46 @@
 const testimonials = [
   {
     name: "Marco R.",
-    role: "Titolare MSP, Milano",
-    quote: "In 6 mesi abbiamo recuperato il 35% di ore non tracciate. DeskCore si e ripagato dal primo mese."
+    role: "Titolare MSP",
+    location: "Milano",
+    quote: "In 6 mesi abbiamo recuperato il 35% di ore non tracciate. DeskCore si e ripagato dal primo mese.",
+    metric: "+35%",
+    metricLabel: "ore recuperate"
   },
   {
     name: "Laura B.",
-    role: "Operations Manager, Roma",
-    quote: "Finalmente i clienti non chiamano piu per sapere lo stato dei ticket. Il portale self-service ha cambiato tutto."
+    role: "Operations Manager",
+    location: "Roma",
+    quote: "Finalmente i clienti non chiamano piu per sapere lo stato dei ticket. Il portale self-service ha cambiato tutto.",
+    metric: "-60%",
+    metricLabel: "chiamate clienti"
   },
   {
     name: "Andrea G.",
-    role: "CTO, Torino",
-    quote: "L'AI Copilot ci suggerisce rinnovi e manutenzioni prima che ce ne accorgiamo. E come avere un collaboratore in piu."
+    role: "CTO",
+    location: "Torino",
+    quote: "L'AI Copilot ci suggerisce rinnovi e manutenzioni prima che ce ne accorgiamo. E come avere un collaboratore in piu.",
+    metric: "2x",
+    metricLabel: "produttivita"
   }
 ];
 ---
 
 <section class="section testimonials" id="testimonianze">
   <div class="container">
-    <div class="testimonials__header">
+    <div class="testimonials__header fade-up">
+      <span class="badge badge-accent">Testimonianze</span>
       <h2 class="testimonials__title">Chi lo usa, non torna indietro</h2>
+      <p class="testimonials__subtitle">MSP italiani che hanno trasformato il loro business</p>
     </div>
 
     <div class="testimonials__grid">
       {testimonials.map((t, i) => (
-        <div class:list={["testimonials__card card fade-up", `stagger-${i + 1}`]}>
+        <div class:list={["testimonials__card fade-up", `stagger-${i + 1}`]}>
+          <div class="testimonials__metric-badge">
+            <span class="testimonials__metric-value">{t.metric}</span>
+            <span class="testimonials__metric-label">{t.metricLabel}</span>
+          </div>
           <div class="testimonials__quote-mark" aria-hidden="true">&ldquo;</div>
           <blockquote class="testimonials__quote">{t.quote}</blockquote>
           <div class="testimonials__stars" aria-label="5 stelle su 5">
@@ -35,8 +50,14 @@ const testimonials = [
           <div class="testimonials__author">
             <span class="testimonials__avatar">{t.name.charAt(0)}</span>
             <div>
-              <div class="testimonials__name">{t.name}</div>
-              <div class="testimonials__role">{t.role}</div>
+              <div class="testimonials__name">
+                {t.name}
+                <svg class="testimonials__verified" width="14" height="14" viewBox="0 0 24 24" fill="none" aria-label="Verificato">
+                  <path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                </svg>
+              </div>
+              <div class="testimonials__role">{t.role} &middot; {t.location}</div>
             </div>
           </div>
         </div>
@@ -55,6 +76,13 @@ const testimonials = [
     font-family: var(--font-display);
     font-size: 2.5rem;
     color: var(--ink);
+    margin-top: 1rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .testimonials__subtitle {
+    font-size: 1.125rem;
+    color: var(--gray-600);
   }
 
   .testimonials__grid {
@@ -67,17 +95,55 @@ const testimonials = [
     display: flex;
     flex-direction: column;
     position: relative;
+    background: var(--gray-100);
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    transition: all 0.35s var(--ease-out);
+  }
+
+  .testimonials__card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(124, 58, 237, 0.3);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(124, 58, 237, 0.1);
+  }
+
+  .testimonials__metric-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.375rem 0.75rem;
+    background: rgba(124, 58, 237, 0.08);
+    border: 1px solid rgba(124, 58, 237, 0.2);
+    border-radius: var(--radius-full);
+    margin-bottom: 1.25rem;
+    width: fit-content;
+  }
+
+  .testimonials__metric-value {
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .testimonials__metric-label {
+    font-size: 0.75rem;
+    color: var(--gray-500);
   }
 
   .testimonials__quote-mark {
     font-family: var(--font-display);
-    font-size: 5rem;
+    font-size: 4rem;
     color: var(--accent);
-    opacity: 0.25;
+    opacity: 0.2;
     line-height: 1;
     position: absolute;
-    top: 1rem;
-    left: 1.5rem;
+    top: 4rem;
+    right: 1.5rem;
     user-select: none;
   }
 
@@ -88,7 +154,6 @@ const testimonials = [
     line-height: 1.7;
     color: var(--ink);
     margin-bottom: 1.5rem;
-    margin-top: 1.5rem;
     flex: 1;
   }
 
@@ -96,7 +161,7 @@ const testimonials = [
     display: flex;
     gap: 0.15rem;
     margin-bottom: 1.25rem;
-    font-size: 1.125rem;
+    font-size: 1rem;
     color: #f59e0b;
   }
 
@@ -109,11 +174,11 @@ const testimonials = [
   }
 
   .testimonials__avatar {
-    width: 40px;
-    height: 40px;
+    width: 42px;
+    height: 42px;
     border-radius: 50%;
-    background: var(--accent-light);
-    color: var(--accent);
+    background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+    color: #fff;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -126,6 +191,14 @@ const testimonials = [
     font-weight: 700;
     font-size: 0.9375rem;
     color: var(--ink);
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+  }
+
+  .testimonials__verified {
+    color: var(--accent);
+    flex-shrink: 0;
   }
 
   .testimonials__role {

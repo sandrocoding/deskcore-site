@@ -1,0 +1,167 @@
+---
+const steps = [
+  {
+    number: "01",
+    title: "Registrati",
+    description: "Crea il tuo account in 2 minuti. Nessuna carta di credito, nessun vincolo.",
+    icon: "🚀"
+  },
+  {
+    number: "02",
+    title: "Importa i dati",
+    description: "Wizard guidato + import CSV. Clienti, asset, contratti: tutto in un click.",
+    icon: "📥"
+  },
+  {
+    number: "03",
+    title: "Configura",
+    description: "Personalizza SLA, ruoli, template e automazioni per il tuo workflow.",
+    icon: "⚙️"
+  },
+  {
+    number: "04",
+    title: "Vai live",
+    description: "Il tuo team è operativo in 48 ore. Supporto italiano sempre disponibile.",
+    icon: "✨"
+  }
+];
+---
+
+<section class="section how-it-works" id="how-it-works">
+  <div class="container">
+    <div class="how__header fade-up">
+      <span class="badge badge-accent">Come funziona</span>
+      <h2 class="how__title">Operativo in 4 semplici passi</h2>
+      <p class="how__subtitle">Dal primo accesso alla piena operatività, senza complicazioni.</p>
+    </div>
+
+    <div class="how__steps">
+      {steps.map((step, i) => (
+        <div class:list={["how__step fade-up", `stagger-${i + 1}`]}>
+          <div class="how__step-number">{step.number}</div>
+          <div class="how__step-line" aria-hidden="true"></div>
+          <div class="how__step-icon">{step.icon}</div>
+          <h3 class="how__step-title">{step.title}</h3>
+          <p class="how__step-desc">{step.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .how__header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .how__title {
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    color: var(--ink);
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .how__subtitle {
+    font-size: 1.125rem;
+    color: var(--gray-600);
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .how__steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    position: relative;
+  }
+
+  .how__step {
+    text-align: center;
+    position: relative;
+    padding: 2rem 1rem;
+  }
+
+  .how__step-number {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+  }
+
+  .how__step-line {
+    position: absolute;
+    top: 4.5rem;
+    right: -1rem;
+    width: calc(100% - 2rem);
+    height: 1px;
+    background: linear-gradient(to right, var(--accent), var(--gray-300));
+    opacity: 0.3;
+    transform: translateX(50%);
+  }
+
+  .how__step:last-child .how__step-line {
+    display: none;
+  }
+
+  .how__step-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 72px;
+    height: 72px;
+    margin-left: auto;
+    margin-right: auto;
+    background: rgba(124, 58, 237, 0.08);
+    border: 1px solid rgba(124, 58, 237, 0.15);
+    border-radius: var(--radius-lg);
+    transition: transform 0.3s var(--ease-out), background 0.3s ease;
+  }
+
+  .how__step:hover .how__step-icon {
+    transform: translateY(-4px);
+    background: rgba(124, 58, 237, 0.12);
+  }
+
+  .how__step-title {
+    font-family: var(--font-body);
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+  }
+
+  .how__step-desc {
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    color: var(--gray-600);
+  }
+
+  @media (max-width: 768px) {
+    .how__steps {
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    .how__step-line {
+      display: none;
+    }
+
+    .how__title {
+      font-size: 2rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .how__steps {
+      grid-template-columns: 1fr;
+      max-width: 360px;
+      margin: 0 auto;
+    }
+  }
+</style>

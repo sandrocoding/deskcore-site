@@ -3,6 +3,7 @@
 
 <section class="hero">
   <div class="hero__glow" aria-hidden="true"></div>
+  <div class="hero__glow hero__glow--2" aria-hidden="true"></div>
   <div class="container hero__inner">
     <span class="badge badge-accent">70+ moduli integrati</span>
     <h1 class="hero__title">
@@ -13,25 +14,55 @@
       e AI in un'unica piattaforma pensata per gli MSP italiani.
     </p>
     <div class="hero__ctas">
-      <a href="#pricing" class="btn btn-primary">Prova gratis 14 giorni</a>
-      <a href="#demo" class="btn btn-outline">Guarda la demo</a>
+      <a href="#pricing" class="btn btn-primary btn-glow">
+        Prova gratis 14 giorni
+        <span class="btn-arrow" aria-hidden="true">&rarr;</span>
+      </a>
+      <a href="/demo" class="btn btn-outline">Guarda la demo</a>
     </div>
     <p class="hero__trust">
       Nessuna carta di credito richiesta &middot; Setup in 5 minuti &middot; Supporto italiano
     </p>
+
+    <!-- Stats bar -->
+    <div class="hero__stats">
+      <div class="hero__stat">
+        <span class="hero__stat-number" data-count="70">0</span><span class="hero__stat-plus">+</span>
+        <span class="hero__stat-label">Moduli integrati</span>
+      </div>
+      <div class="hero__stat-divider"></div>
+      <div class="hero__stat">
+        <span class="hero__stat-number" data-count="30">0</span><span class="hero__stat-plus">%</span>
+        <span class="hero__stat-label">Ore recuperate</span>
+      </div>
+      <div class="hero__stat-divider"></div>
+      <div class="hero__stat">
+        <span class="hero__stat-number" data-count="48">0</span><span class="hero__stat-plus">h</span>
+        <span class="hero__stat-label">Per essere operativi</span>
+      </div>
+      <div class="hero__stat-divider"></div>
+      <div class="hero__stat">
+        <span class="hero__stat-number" data-count="340">0</span><span class="hero__stat-plus">%</span>
+        <span class="hero__stat-label">ROI medio anno 1</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="hero__scroll" aria-hidden="true">
+    <div class="hero__scroll-line"></div>
   </div>
 </section>
 
 <style>
   .hero {
     background: var(--paper);
-    padding: 8rem 0 6rem;
+    padding: 8rem 0 5rem;
     text-align: center;
     position: relative;
     overflow: hidden;
   }
 
-  /* Radial glow behind the hero */
   .hero__glow {
     position: absolute;
     top: -30%;
@@ -48,6 +79,19 @@
     pointer-events: none;
     z-index: 0;
     animation: glowPulse 8s ease-in-out infinite alternate;
+  }
+
+  .hero__glow--2 {
+    top: auto;
+    bottom: -40%;
+    width: 600px;
+    height: 400px;
+    background: radial-gradient(
+      ellipse at center,
+      rgba(59, 130, 246, 0.08) 0%,
+      transparent 60%
+    );
+    animation-delay: -4s;
   }
 
   @keyframes glowPulse {
@@ -76,7 +120,7 @@
 
   .hero__title {
     font-family: var(--font-display);
-    font-size: 3.5rem;
+    font-size: 3.75rem;
     color: var(--ink);
     margin-top: 1.25rem;
     margin-bottom: 1.5rem;
@@ -95,13 +139,125 @@
     gap: 1rem;
     flex-wrap: wrap;
     justify-content: center;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .btn-glow {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn-glow::after {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+    border-radius: inherit;
+    z-index: -1;
+    opacity: 0;
+    filter: blur(12px);
+    transition: opacity 0.3s ease;
+  }
+
+  .btn-glow:hover::after {
+    opacity: 0.6;
+  }
+
+  .btn-arrow {
+    display: inline-block;
+    transition: transform 0.25s var(--ease-out);
+    font-size: 1.1rem;
+  }
+
+  .btn-glow:hover .btn-arrow {
+    transform: translateX(4px);
   }
 
   .hero__trust {
     font-size: 0.875rem;
     color: var(--gray-400);
     letter-spacing: 0.01em;
+    margin-bottom: 3.5rem;
+  }
+
+  /* Stats bar */
+  .hero__stats {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    padding: 1.5rem 2.5rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-lg);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+
+  .hero__stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  .hero__stat-number {
+    font-family: var(--font-body);
+    font-size: 2rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+  }
+
+  .hero__stat-plus {
+    font-family: var(--font-body);
+    font-size: 1.25rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero__stat-label {
+    font-size: 0.75rem;
+    color: var(--gray-500);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  .hero__stat-divider {
+    width: 1px;
+    height: 40px;
+    background: var(--gray-300);
+    opacity: 0.5;
+  }
+
+  /* Scroll indicator */
+  .hero__scroll {
+    position: absolute;
+    bottom: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+  }
+
+  .hero__scroll-line {
+    width: 1px;
+    height: 32px;
+    background: linear-gradient(to bottom, var(--accent), transparent);
+    animation: scrollLine 2s ease-in-out infinite;
+  }
+
+  @keyframes scrollLine {
+    0% { opacity: 1; transform: scaleY(0); transform-origin: top; }
+    50% { opacity: 1; transform: scaleY(1); transform-origin: top; }
+    50.01% { transform-origin: bottom; }
+    100% { opacity: 0; transform: scaleY(0); transform-origin: bottom; }
   }
 
   @media (max-width: 768px) {
@@ -131,5 +287,54 @@
       width: 500px;
       height: 400px;
     }
+
+    .hero__stats {
+      flex-wrap: wrap;
+      gap: 1.25rem;
+      padding: 1.25rem;
+      justify-content: center;
+    }
+
+    .hero__stat-divider {
+      display: none;
+    }
+
+    .hero__stat {
+      min-width: 100px;
+    }
+
+    .hero__scroll {
+      display: none;
+    }
   }
 </style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Animated counters
+    const counters = document.querySelectorAll('[data-count]');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const el = entry.target as HTMLElement;
+          const target = parseInt(el.dataset.count || '0');
+          const duration = 1500;
+          const start = performance.now();
+
+          const animate = (now: number) => {
+            const elapsed = now - start;
+            const progress = Math.min(elapsed / duration, 1);
+            const eased = 1 - Math.pow(1 - progress, 4); // easeOutQuart
+            el.textContent = Math.round(target * eased).toString();
+            if (progress < 1) requestAnimationFrame(animate);
+          };
+
+          requestAnimationFrame(animate);
+          observer.unobserve(el);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    counters.forEach(c => observer.observe(c));
+  });
+</script>

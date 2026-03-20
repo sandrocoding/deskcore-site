@@ -339,3 +339,47 @@ input:focus, textarea:focus, select:focus {
 .stagger-4 { transition-delay: 0.2s; }
 .stagger-5 { transition-delay: 0.25s; }
 .stagger-6 { transition-delay: 0.3s; }
+
+/* ── Section divider glow ─────────────────────────── */
+
+.section-glow {
+  position: relative;
+}
+
+.section-glow::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  opacity: 0.3;
+}
+
+/* ── Smooth selection color ───────────────────────── */
+
+::selection {
+  background: rgba(124, 58, 237, 0.3);
+  color: var(--ink);
+}
+
+/* ── Custom scrollbar ─────────────────────────────── */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--paper);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gray-300);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gray-400);
+}

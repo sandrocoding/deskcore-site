@@ -10,10 +10,28 @@
       <p class="final-cta__subtitle">
         Inizia la prova gratuita di 14 giorni. Nessuna carta di credito, nessun vincolo.
       </p>
-      <a href="#" class="final-cta__btn">
-        Prova DeskCore gratis
-        <span class="final-cta__arrow" aria-hidden="true">&rarr;</span>
-      </a>
+
+      <!-- Email capture -->
+      <form class="final-cta__form" id="cta-form">
+        <input
+          type="email"
+          class="final-cta__input"
+          placeholder="La tua email aziendale"
+          required
+          aria-label="Email aziendale"
+        />
+        <button type="submit" class="final-cta__submit">
+          Inizia gratis
+          <span class="final-cta__arrow" aria-hidden="true">&rarr;</span>
+        </button>
+      </form>
+
+      <div class="final-cta__trust-row">
+        <span class="final-cta__check">&#10003; Nessuna carta richiesta</span>
+        <span class="final-cta__check">&#10003; Setup in 5 minuti</span>
+        <span class="final-cta__check">&#10003; Cancella quando vuoi</span>
+      </div>
+
       <p class="final-cta__ps">
         P.S. — Il piano Starter e disponibile per i primi 100 MSP a &euro;29/mese. Dopo, il prezzo salira.
       </p>
@@ -47,6 +65,18 @@
     pointer-events: none;
   }
 
+  /* Decorative glow orbs */
+  .final-cta__inner::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
   .final-cta__title {
     font-family: var(--font-display);
     font-size: 2.5rem;
@@ -69,22 +99,51 @@
     position: relative;
   }
 
-  .final-cta__btn {
+  /* Email form */
+  .final-cta__form {
+    display: flex;
+    gap: 0;
+    max-width: 480px;
+    margin: 0 auto 1.5rem;
+    position: relative;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+  }
+
+  .final-cta__input {
+    flex: 1;
+    padding: 1rem 1.25rem;
+    background: rgba(255, 255, 255, 0.95);
+    border: none;
+    font-family: var(--font-body);
+    font-size: 0.9375rem;
+    color: #1a1a2e;
+    outline: none;
+  }
+
+  .final-cta__input::placeholder {
+    color: #71718f;
+  }
+
+  .final-cta__submit {
     display: inline-flex;
     align-items: center;
-    justify-content: center;
     gap: 0.5rem;
-    padding: 1rem 2.5rem;
-    background: #fff;
-    color: var(--gradient-start);
+    padding: 1rem 1.75rem;
+    background: var(--paper);
+    color: #fff;
     font-family: var(--font-body);
     font-weight: 700;
-    font-size: 1rem;
-    border-radius: var(--radius-md);
-    text-decoration: none;
-    transition: transform 0.25s var(--ease-out), box-shadow 0.25s var(--ease-out);
-    margin-bottom: 2rem;
-    position: relative;
+    font-size: 0.9375rem;
+    border: none;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background 0.25s ease;
+  }
+
+  .final-cta__submit:hover {
+    background: var(--gray-100);
   }
 
   .final-cta__arrow {
@@ -93,19 +152,29 @@
     font-size: 1.125rem;
   }
 
-  .final-cta__btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-    color: var(--gradient-mid);
+  .final-cta__submit:hover .final-cta__arrow {
+    transform: translateX(4px);
   }
 
-  .final-cta__btn:hover .final-cta__arrow {
-    transform: translateX(4px);
+  /* Trust row */
+  .final-cta__trust-row {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    position: relative;
+    flex-wrap: wrap;
+  }
+
+  .final-cta__check {
+    font-size: 0.8125rem;
+    opacity: 0.8;
+    white-space: nowrap;
   }
 
   .final-cta__ps {
     font-size: 0.875rem;
-    opacity: 0.75;
+    opacity: 0.65;
     font-style: italic;
     max-width: 460px;
     margin: 0 auto;
@@ -125,6 +194,26 @@
 
     .final-cta {
       padding: 4rem 0;
+    }
+
+    .final-cta__form {
+      flex-direction: column;
+      border-radius: var(--radius-md);
+    }
+
+    .final-cta__input {
+      border-radius: var(--radius-md) var(--radius-md) 0 0;
+    }
+
+    .final-cta__submit {
+      border-radius: 0 0 var(--radius-md) var(--radius-md);
+      justify-content: center;
+    }
+
+    .final-cta__trust-row {
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
     }
   }
 </style>
